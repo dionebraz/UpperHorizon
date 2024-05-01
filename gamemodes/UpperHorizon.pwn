@@ -60,12 +60,7 @@ public OnPlayerDisconnect(playerid, reason)
 
 public OnPlayerRequestClass(playerid, classid)
 {
-    SetPlayerPos(playerid, 217.8511, -98.4865, 1005.2578);
-    SetPlayerFacingAngle(playerid, 113.8861);
-    SetPlayerInterior(playerid, 15);
-    SetPlayerCameraPos(playerid, 215.2182, -99.5546, 1006.4);
-    SetPlayerCameraLookAt(playerid, 217.8511, -98.4865, 1005.2578);
-    ApplyAnimation(playerid, "benchpress", "gym_bp_celebrate", 4.1, true, false, false, false, 0, SYNC_NONE);
+    SpawnPlayerPier(playerid);
     return 1;
 }
 public OnPlayerCommandText(playerid, cmdtext[])
@@ -234,6 +229,19 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
 
 public OnVehicleDamageStatusUpdate(vehicleid, playerid)
 {
+    return 1;
+}
+
+stock SpawnPlayerPier(playerid)
+{
+    TogglePlayerSpectating(playerid, false);
+    TogglePlayerControllable(playerid, true);
+    CancelSelectTextDraw(playerid);
+    SetSpawnInfo(playerid, 0, 171, 369.7811, -2050.6787, 7.8359, 359.9895, WEAPON_SAWEDOFF, 0, WEAPON_UZI, 0, WEAPON_FIST, 0);
+    SetPlayerSkin(playerid, 171);
+    SpawnPlayer(playerid);
+    SetCameraBehindPlayer(playerid);
+    LimparChat(playerid);
     return 1;
 }
 
