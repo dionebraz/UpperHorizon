@@ -1309,3 +1309,125 @@ Loaded 21 component(s) from C:\Jogos\Upper Horizon\components
 [2024-05-01T16:48:59-0300] [Info] [connection] incoming connection: 127.0.0.1:59495 id: 0
 [2024-05-01T16:48:59-0300] [Info] [join] DioneBraz has joined the server (0:127.0.0.1)
 [2024-05-01T16:50:23-0300] [Info] [part] DioneBraz has left the server (0:1)
+Starting open.mp server (1.2.0.2670) from commit 41ebf182bf73dc9cb11841bfe6b0179ba31f9dd5
+Loading component Actors.dll
+	Successfully loaded component Actors (1.2.0.2670) with UID c81ca021eae2ad5c
+Loading component Checkpoints.dll
+	Successfully loaded component Checkpoints (1.2.0.2670) with UID 44a937350d611dde
+Loading component Classes.dll
+	Successfully loaded component Classes (1.2.0.2670) with UID 8cfb3183976da208
+Loading component Console.dll
+	Successfully loaded component Console (1.2.0.2670) with UID bfa24e49d0c95ee4
+Loading component CustomModels.dll
+	Successfully loaded component CustomModels (1.2.0.2670) with UID 15e3cb1e7c77ffff
+Loading component Databases.dll
+	Successfully loaded component Databases (1.2.0.2670) with UID 80092e7eb5821a96
+Loading component Dialogs.dll
+	Successfully loaded component Dialogs (1.2.0.2670) with UID 44a111350d611dde
+Loading component GangZones.dll
+	Successfully loaded component GangZones (1.2.0.2670) with UID b3351d11ee8d8056
+Loading component LegacyConfig.dll
+	Successfully loaded component LegacyConfig (1.2.0.2670) with UID 24ef6216838f9ffc
+Loading component LegacyNetwork.dll
+	Successfully loaded component RakNetLegacyNetwork (1.2.0.2670) with UID ea9799fd79cf8442
+Loading component Menus.dll
+	Successfully loaded component Menus (1.2.0.2670) with UID 621e219eb97ee0b2
+Loading component Objects.dll
+	Successfully loaded component Objects (1.2.0.2670) with UID 59f8415f72da6160
+Loading component Pawn.dll
+	Successfully loaded component Pawn (1.2.0.2670) with UID 78906cd9f19c36a6
+Loading component Pickups.dll
+	Successfully loaded component Pickups (1.2.0.2670) with UID cf304faa363dd971
+Loading component Recordings.dll
+	Successfully loaded component Recordings (1.2.0.2670) with UID 871144d399f5f613
+Loading component TextDraws.dll
+	Successfully loaded component TextDraws (1.2.0.2670) with UID 9b5dc2b1d15c992a
+Loading component TextLabels.dll
+	Successfully loaded component TextLabels (1.2.0.2670) with UID a0c57ea80a009742
+Loading component Timers.dll
+	Successfully loaded component Timers (1.2.0.2670) with UID 2ad8124c5ea257a3
+Loading component Unicode.dll
+	Successfully loaded component Unicode (1.2.0.2670) with UID 8ffb446f8353922b
+Loading component Variables.dll
+	Successfully loaded component Variables (1.2.0.2670) with UID 75e121848bc01fa2
+Loading component Vehicles.dll
+	Successfully loaded component Vehicles (1.2.0.2670) with UID 3f1f62ee9e22ab19
+Loaded 21 component(s) from C:\Jogos\Upper Horizon\components
+[2024-05-01T16:56:52-0300] [Info]  
+[2024-05-01T16:56:52-0300] [Info]  
+[2024-05-01T16:56:52-0300] [Info]          ==============================================================
+[2024-05-01T16:56:52-0300] [Info]          |                                                            |
+[2024-05-01T16:56:52-0300] [Info]          |                                                            |
+[2024-05-01T16:56:52-0300] [Info]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[2024-05-01T16:56:52-0300] [Info]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[2024-05-01T16:56:52-0300] [Info]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[2024-05-01T16:56:52-0300] [Info]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[2024-05-01T16:56:52-0300] [Info]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[2024-05-01T16:56:52-0300] [Info]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[2024-05-01T16:56:52-0300] [Info]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[2024-05-01T16:56:52-0300] [Info]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[2024-05-01T16:56:52-0300] [Info]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[2024-05-01T16:56:52-0300] [Info]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[2024-05-01T16:56:52-0300] [Info]          |           Y:::::Y                    S:::::S   I::::I      |
+[2024-05-01T16:56:52-0300] [Info]          |           Y:::::Y                    S:::::S   I::::I      |
+[2024-05-01T16:56:52-0300] [Info]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[2024-05-01T16:56:52-0300] [Info]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[2024-05-01T16:56:52-0300] [Info]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[2024-05-01T16:56:52-0300] [Info]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[2024-05-01T16:56:52-0300] [Info]          |                                                            |
+[2024-05-01T16:56:52-0300] [Info]          |                                                            |
+[2024-05-01T16:56:52-0300] [Info]          |                      (c) 2021 MPL v1.1                     |
+[2024-05-01T16:56:52-0300] [Info]          |            Alex "Y_Less" Cole and contributors.            |
+[2024-05-01T16:56:52-0300] [Info]          |                                                            |
+[2024-05-01T16:56:52-0300] [Info]          |                                                            |
+[2024-05-01T16:56:52-0300] [Info]          ==============================================================
+[2024-05-01T16:56:52-0300] [Info]  
+[2024-05-01T16:56:52-0300] [Info]  
+[2024-05-01T16:56:52-0300] [Info]  ========================================== 
+[2024-05-01T16:56:52-0300] [Info]  |                                        | 
+[2024-05-01T16:56:52-0300] [Info]  |   Generating code, this may take a     | 
+[2024-05-01T16:56:52-0300] [Info]  |  little bit of time.  Note that this   | 
+[2024-05-01T16:56:52-0300] [Info]  |  code generation works best with the   | 
+[2024-05-01T16:56:52-0300] [Info]  |     JIT plugin, which you are not      | 
+[2024-05-01T16:56:52-0300] [Info]  |     currently using.  Get it here:     | 
+[2024-05-01T16:56:52-0300] [Info]  |                                        | 
+[2024-05-01T16:56:52-0300] [Info]  |       https://git.io/jit-plugin        | 
+[2024-05-01T16:56:52-0300] [Info]  |                                        | 
+[2024-05-01T16:56:52-0300] [Info]  |             Please wait...             | 
+[2024-05-01T16:56:52-0300] [Info]  |                                        | 
+[2024-05-01T16:56:52-0300] [Info]  |             Done in 19ms!              | 
+[2024-05-01T16:56:52-0300] [Info]  |                                        | 
+[2024-05-01T16:56:52-0300] [Info]  ========================================== 
+[2024-05-01T16:56:52-0300] [Info]  |                                        | 
+[2024-05-01T16:56:52-0300] [Info]  | Server:      open.mp 1.2.0.2670 (W)    | 
+[2024-05-01T16:56:52-0300] [Info]  | Started:     01 May 2024 - 16:56:52    | 
+[2024-05-01T16:56:52-0300] [Info]  |                                        | 
+[2024-05-01T16:56:52-0300] [Info]  | Compiler:    3.10.11 (Windows)         | 
+[2024-05-01T16:56:52-0300] [Info]  | Includes:    open.mp v037030           | 
+[2024-05-01T16:56:52-0300] [Info]  | Codepage:    <none>                    | 
+[2024-05-01T16:56:52-0300] [Info]  | Built:       01 May 2024 - 16:56:05    | 
+[2024-05-01T16:56:52-0300] [Info]  |                                        | 
+[2024-05-01T16:56:52-0300] [Info]  | YSI:         v05.10.0006               | 
+[2024-05-01T16:56:52-0300] [Info]  | Master:      -1                        | 
+[2024-05-01T16:56:52-0300] [Info]  |                                        | 
+[2024-05-01T16:56:52-0300] [Info]  | JIT:         <none>                    | 
+[2024-05-01T16:56:52-0300] [Info]  | Crashdetect: <none>                    | 
+[2024-05-01T16:56:52-0300] [Info]  |                                        | 
+[2024-05-01T16:56:52-0300] [Info]  ========================================== 
+[2024-05-01T16:56:52-0300] [Info]  
+[2024-05-01T16:56:52-0300] [Info]  
+[2024-05-01T16:56:52-0300] [Warning] Legacy key `hostname` supplied, using `name`
+[2024-05-01T16:56:52-0300] [Warning] Legacy key `mapname` supplied, using `game.map`
+[2024-05-01T16:56:52-0300] [Info]  
+[2024-05-01T16:56:52-0300] [Info]   -------------------------------
+[2024-05-01T16:56:52-0300] [Info]   |  Cidade carregada com sucesso! |
+[2024-05-01T16:56:52-0300] [Info]   -------------------------------
+[2024-05-01T16:56:52-0300] [Info]  
+[2024-05-01T16:56:52-0300] [Info] Legacy Network started on port 7777
+[2024-05-01T16:57:03-0300] [Info] Couldn't announce legacy network to open.mp list.
+[2024-05-01T16:57:03-0300] [Info] 	[Server Error] Status: 406
+[2024-05-01T16:57:03-0300] [Info] 	[Server Error] Message: {"error":"failed to query server: socket read timed out"}
+[2024-05-01T16:57:03-0300] [Info] This won't affect the server's behaviour.
+[2024-05-01T16:57:12-0300] [Info] [connection] incoming connection: 127.0.0.1:59244 id: 0
+[2024-05-01T16:57:12-0300] [Info] [join] DioneBraz has joined the server (0:127.0.0.1)
+[2024-05-01T16:57:49-0300] [Info] [part] DioneBraz has left the server (0:1)
