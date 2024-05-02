@@ -1,4 +1,5 @@
 #include <open.mp>
+#include <race>
 #include <YSI-Includes\YSI_Coding\y_hooks>
 
 /*
@@ -24,11 +25,12 @@ main()
 
 public OnGameModeInit()
 {
-    SetGameModeText("Upper Horizon v0.1");
+    SetWeather(0);
+    UsePlayerPedAnims();
+    DisableInteriorEnterExits();
     AddPlayerClass(0, 2495.3547, -1688.2319, 13.6774, 351.1646);
     AddStaticVehicle(522, 2493.7583, -1683.6482, 12.9099, 270.8069, -1, -1);
-    DisableInteriorEnterExits();
-    SetWeather(0);
+    SetGameModeText("Upper Horizon v0.1");
     SendRconCommand("language PT-BR");
     SendRconCommand("hostname Upper Horizon");
     SendRconCommand("mapname Brasil");
@@ -63,35 +65,11 @@ public OnPlayerRequestClass(playerid, classid)
     SpawnPlayerPier(playerid);
     return 1;
 }
-public OnPlayerCommandText(playerid, cmdtext[])
-{
-    return 1;
-}
 
 public OnPlayerSpawn(playerid)
 {
     SetPlayerInterior(playerid, 0);
     LimparChat(playerid);
-    return 1;
-}
-
-public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
-{
-    return 1;
-}
-
-public OnPlayerExitVehicle(playerid, vehicleid)
-{
-    return 1;
-}
-
-public OnVehicleSpawn(vehicleid)
-{
-    return 1;
-}
-
-public OnVehicleDeath(vehicleid, killerid)
-{
     return 1;
 }
 
@@ -110,36 +88,6 @@ public OnPlayerText(playerid, text[])
         SetPlayerChatBubble(playerid, text, 0x1E90FFFF, CHAT_DISTANCE, 5000);
     }
     return 0;
-}
-
-public OnPlayerUpdate(playerid)
-{
-    return 1;
-}
-
-public OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys)
-{
-    return 1;
-}
-
-public OnPlayerStateChange(playerid, PLAYER_STATE:newstate, PLAYER_STATE:oldstate)
-{
-    return 1;
-}
-
-public OnPlayerEnterRaceCheckpoint(playerid)
-{
-    return 1;
-}
-
-public OnPlayerLeaveRaceCheckpoint(playerid)
-{
-    return 1;
-}
-
-public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
-{
-    return 1;
 }
 
 public OnRconLoginAttempt(ip[], password[], success)
@@ -162,72 +110,7 @@ public OnRconLoginAttempt(ip[], password[], success)
     return 1;
 }
 
-public OnPlayerPickUpPickup(playerid, pickupid)
-{
-    return 1;
-}
-
-public OnPlayerPickUpPlayerPickup(playerid, pickupid)
-{
-    return 1;
-}
-
-public OnPickupStreamIn(pickupid, playerid)
-{
-    return 1;
-}
-
-public OnPickupStreamOut(pickupid, playerid)
-{
-    return 1;
-}
-
-public OnPlayerPickupStreamIn(pickupid, playerid)
-{
-    return 1;
-}
-
-public OnPlayerPickupStreamOut(pickupid, playerid)
-{
-    return 1;
-}
-
-public OnPlayerTakeDamage(playerid, issuerid, Float:amount, WEAPON:weaponid, bodypart)
-{
-    return 1;
-}
-
-public OnPlayerGiveDamage(playerid, damagedid, Float:amount, WEAPON:weaponid, bodypart)
-{
-    return 1;
-}
-
-public OnPlayerClickPlayer(playerid, clickedplayerid, CLICK_SOURCE:source)
-{
-    return 1;
-}
-
 public OnScriptCash(playerid, amount, source)
-{
-    return 1;
-}
-
-public OnPlayerClickMap(playerid, Float:fX, Float:fY, Float:fZ)
-{
-    return 1;
-}
-
-public OnPlayerClickTextDraw(playerid, Text:clickedid)
-{
-    return 1;
-}
-
-public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
-{
-    return 1;
-}
-
-public OnVehicleDamageStatusUpdate(vehicleid, playerid)
 {
     return 1;
 }
@@ -238,7 +121,7 @@ stock SpawnPlayerPier(playerid)
     TogglePlayerControllable(playerid, true);
     CancelSelectTextDraw(playerid);
     SetSpawnInfo(playerid, 0, 171, 369.7811, -2050.6787, 7.8359, 359.9895, WEAPON_SAWEDOFF, 0, WEAPON_UZI, 0, WEAPON_FIST, 0);
-    SetPlayerSkin(playerid, 171);
+    SetPlayerSkin(playerid, 7);
     SpawnPlayer(playerid);
     SetCameraBehindPlayer(playerid);
     LimparChat(playerid);
