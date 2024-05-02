@@ -89,7 +89,7 @@
         "stream_radius": 200.0,
         "stream_rate": 1000,
         "time_sync_rate": 30000,
-        "use_lan_mode": false
+        "use_lan_mode": true
     },
     "password": "",
     "pawn": {
@@ -99,7 +99,9 @@
         "main_scripts": [
             "UpperHorizon"
         ],
-        "side_scripts": []
+        "side_scripts": [
+            "filterscripts/iradio"
+        ]
     },
     "rcon": {
         "allow_teleport": false,
