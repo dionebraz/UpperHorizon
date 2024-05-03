@@ -99,9 +99,7 @@
         "main_scripts": [
             "UpperHorizon"
         ],
-        "side_scripts": [
-            "filterscripts/iradio"
-        ]
+        "side_scripts": []
     },
     "rcon": {
         "allow_teleport": false,

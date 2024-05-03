@@ -36,6 +36,12 @@ enum RACE_playerInfo
     Text:RACE_textdrawCheckpoint,
     Text:RACE_textdrawTimeLeft,
     Text:RACE_textdrawSpeed,
+    Text:RACE_textdrawUsebox[24],
+    Text:RACE_textdrawCircleRed,
+    Text:RACE_textdrawCircleYellow,
+    Text:RACE_textdrawCircleGreen,
+    Text:RACE_textdrawSecondsLeft,
+    Text:RACE_textdrawStartIn,
 
     bool:RACE_isPlayerInRace,
 
@@ -86,10 +92,10 @@ new RACE_pInfo[MAX_PLAYERS][RACE_playerInfo],
 
     RACE_spawnSlots[16] = {-1, ...},
 
-    bool:RACE_isRaceStarted = false,
-    bool:RACE_isRaceInLobby = false,
+                          bool:RACE_isRaceStarted = false,
+                          bool:RACE_isRaceInLobby = false,
 
-    RACE_globalString[144];
+                          RACE_globalString[144];
 
 RACE_loadTextdraws()
 {
@@ -106,7 +112,7 @@ RACE_loadTextdraws()
         TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawBox], 0);
         TextDrawFont(RACE_pInfo[i][RACE_textdrawBox], TEXT_DRAW_FONT_0);
 
-        RACE_pInfo[i][RACE_textdrawTitle] = TextDrawCreate(534.114196, 349.999572, "Race");
+        RACE_pInfo[i][RACE_textdrawTitle] = TextDrawCreate(534.114196, 349.999572, "Corrida");
         TextDrawLetterSize(RACE_pInfo[i][RACE_textdrawTitle], 0.449999, 1.600000);
         TextDrawAlignment(RACE_pInfo[i][RACE_textdrawTitle], TEXT_DRAW_ALIGN_LEFT);
         TextDrawColour(RACE_pInfo[i][RACE_textdrawTitle], -1);
@@ -184,16 +190,306 @@ RACE_loadTextdraws()
         TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawTip2], 1);
         TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawTip2], 51);
         TextDrawFont(RACE_pInfo[i][RACE_textdrawTip2], TEXT_DRAW_FONT_1);
+
+        RACE_pInfo[i][RACE_textdrawUsebox][0] = TextDrawCreate(260.000, 21.750, "LD_SPAC:white");
+        TextDrawTextSize(RACE_pInfo[i][RACE_textdrawUsebox][0], 120.000, 18.200);
+        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawUsebox][0], TEXT_DRAW_ALIGN_LEFT);
+        TextDrawColour(RACE_pInfo[i][RACE_textdrawUsebox][0], 437918463);
+        TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawUsebox][0], 0);
+        TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawUsebox][0], 0);
+        TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawUsebox][0], 255);
+        TextDrawFont(RACE_pInfo[i][RACE_textdrawUsebox][0], TEXT_DRAW_FONT_SPRITE_DRAW);
+        TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawUsebox][0], true);
+
+        RACE_pInfo[i][RACE_textdrawUsebox][1] = TextDrawCreate(246.000, 17.000, "LD_BEAT:chit");
+        TextDrawTextSize(RACE_pInfo[i][RACE_textdrawUsebox][1], 30.000, 30.000);
+        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawUsebox][1], TEXT_DRAW_ALIGN_LEFT);
+        TextDrawColour(RACE_pInfo[i][RACE_textdrawUsebox][1], 437918463);
+        TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawUsebox][1], 0);
+        TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawUsebox][1], 0);
+        TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawUsebox][1], 255);
+        TextDrawFont(RACE_pInfo[i][RACE_textdrawUsebox][1], TEXT_DRAW_FONT_SPRITE_DRAW);
+        TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawUsebox][1], true);
+
+        RACE_pInfo[i][RACE_textdrawUsebox][2] = TextDrawCreate(365.000, 17.000, "LD_BEAT:chit");
+        TextDrawTextSize(RACE_pInfo[i][RACE_textdrawUsebox][2], 30.000, 30.000);
+        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawUsebox][2], TEXT_DRAW_ALIGN_LEFT);
+        TextDrawColour(RACE_pInfo[i][RACE_textdrawUsebox][2], 437918463);
+        TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawUsebox][2], 0);
+        TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawUsebox][2], 0);
+        TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawUsebox][2], 255);
+        TextDrawFont(RACE_pInfo[i][RACE_textdrawUsebox][2], TEXT_DRAW_FONT_SPRITE_DRAW);
+        TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawUsebox][2], true);
+
+        RACE_pInfo[i][RACE_textdrawUsebox][3] = TextDrawCreate(260.000, 73.750, "LD_SPAC:white");
+        TextDrawTextSize(RACE_pInfo[i][RACE_textdrawUsebox][3], 120.000, 18.200);
+        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawUsebox][3], TEXT_DRAW_ALIGN_LEFT);
+        TextDrawColour(RACE_pInfo[i][RACE_textdrawUsebox][3], 437918463);
+        TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawUsebox][3], 0);
+        TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawUsebox][3], 0);
+        TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawUsebox][3], 255);
+        TextDrawFont(RACE_pInfo[i][RACE_textdrawUsebox][3], TEXT_DRAW_FONT_SPRITE_DRAW);
+        TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawUsebox][3], true);
+
+        RACE_pInfo[i][RACE_textdrawUsebox][4] = TextDrawCreate(246.000, 67.000, "LD_BEAT:chit");
+        TextDrawTextSize(RACE_pInfo[i][RACE_textdrawUsebox][4], 30.000, 30.000);
+        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawUsebox][4], TEXT_DRAW_ALIGN_LEFT);
+        TextDrawColour(RACE_pInfo[i][RACE_textdrawUsebox][4], 437918463);
+        TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawUsebox][4], 0);
+        TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawUsebox][4], 0);
+        TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawUsebox][4], 255);
+        TextDrawFont(RACE_pInfo[i][RACE_textdrawUsebox][4], TEXT_DRAW_FONT_SPRITE_DRAW);
+        TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawUsebox][4], true);
+
+        RACE_pInfo[i][RACE_textdrawUsebox][5] = TextDrawCreate(365.000, 67.000, "LD_BEAT:chit");
+        TextDrawTextSize(RACE_pInfo[i][RACE_textdrawUsebox][5], 30.000, 30.000);
+        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawUsebox][5], TEXT_DRAW_ALIGN_LEFT);
+        TextDrawColour(RACE_pInfo[i][RACE_textdrawUsebox][5], 437918463);
+        TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawUsebox][5], 0);
+        TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawUsebox][5], 0);
+        TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawUsebox][5], 255);
+        TextDrawFont(RACE_pInfo[i][RACE_textdrawUsebox][5], TEXT_DRAW_FONT_SPRITE_DRAW);
+        TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawUsebox][5], true);
+
+        RACE_pInfo[i][RACE_textdrawUsebox][6] = TextDrawCreate(251.000, 32.750, "LD_SPAC:white");
+        TextDrawTextSize(RACE_pInfo[i][RACE_textdrawUsebox][6], 138.850, 50.000);
+        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawUsebox][6], TEXT_DRAW_ALIGN_LEFT);
+        TextDrawColour(RACE_pInfo[i][RACE_textdrawUsebox][6], 437918463);
+        TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawUsebox][6], 0);
+        TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawUsebox][6], 0);
+        TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawUsebox][6], 255);
+        TextDrawFont(RACE_pInfo[i][RACE_textdrawUsebox][6], TEXT_DRAW_FONT_SPRITE_DRAW);
+        TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawUsebox][6], true);
+
+        RACE_pInfo[i][RACE_textdrawUsebox][7] = TextDrawCreate(261.000, 26.700, "LD_SPAC:white");
+        TextDrawTextSize(RACE_pInfo[i][RACE_textdrawUsebox][7], 118.000, 10.200);
+        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawUsebox][7], TEXT_DRAW_ALIGN_LEFT);
+        TextDrawColour(RACE_pInfo[i][RACE_textdrawUsebox][7], -1);
+        TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawUsebox][7], 0);
+        TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawUsebox][7], 0);
+        TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawUsebox][7], 255);
+        TextDrawFont(RACE_pInfo[i][RACE_textdrawUsebox][7], TEXT_DRAW_FONT_SPRITE_DRAW);
+        TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawUsebox][7], true);
+
+        RACE_pInfo[i][RACE_textdrawUsebox][8] = TextDrawCreate(253.000, 24.000, "LD_BEAT:chit");
+        TextDrawTextSize(RACE_pInfo[i][RACE_textdrawUsebox][8], 16.000, 16.000);
+        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawUsebox][8], TEXT_DRAW_ALIGN_LEFT);
+        TextDrawColour(RACE_pInfo[i][RACE_textdrawUsebox][8], -1);
+        TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawUsebox][8], 0);
+        TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawUsebox][8], 0);
+        TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawUsebox][8], 255);
+        TextDrawFont(RACE_pInfo[i][RACE_textdrawUsebox][8], TEXT_DRAW_FONT_SPRITE_DRAW);
+        TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawUsebox][8], true);
+
+        RACE_pInfo[i][RACE_textdrawUsebox][9] = TextDrawCreate(372.000, 24.000, "LD_BEAT:chit");
+        TextDrawTextSize(RACE_pInfo[i][RACE_textdrawUsebox][9], 16.000, 16.000);
+        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawUsebox][9], TEXT_DRAW_ALIGN_LEFT);
+        TextDrawColour(RACE_pInfo[i][RACE_textdrawUsebox][9], -1);
+        TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawUsebox][9], 0);
+        TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawUsebox][9], 0);
+        TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawUsebox][9], 255);
+        TextDrawFont(RACE_pInfo[i][RACE_textdrawUsebox][9], TEXT_DRAW_FONT_SPRITE_DRAW);
+        TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawUsebox][9], true);
+
+        RACE_pInfo[i][RACE_textdrawUsebox][10] = TextDrawCreate(262.000, 77.000, "LD_SPAC:white");
+        TextDrawTextSize(RACE_pInfo[i][RACE_textdrawUsebox][10], 118.000, 10.200);
+        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawUsebox][10], TEXT_DRAW_ALIGN_LEFT);
+        TextDrawColour(RACE_pInfo[i][RACE_textdrawUsebox][10], -1);
+        TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawUsebox][10], 0);
+        TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawUsebox][10], 0);
+        TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawUsebox][10], 255);
+        TextDrawFont(RACE_pInfo[i][RACE_textdrawUsebox][10], TEXT_DRAW_FONT_SPRITE_DRAW);
+        TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawUsebox][10], true);
+
+        RACE_pInfo[i][RACE_textdrawUsebox][11] = TextDrawCreate(253.000, 74.000, "LD_BEAT:chit");
+        TextDrawTextSize(RACE_pInfo[i][RACE_textdrawUsebox][11], 16.000, 16.000);
+        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawUsebox][11], TEXT_DRAW_ALIGN_LEFT);
+        TextDrawColour(RACE_pInfo[i][RACE_textdrawUsebox][11], -1);
+        TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawUsebox][11], 0);
+        TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawUsebox][11], 0);
+        TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawUsebox][11], 255);
+        TextDrawFont(RACE_pInfo[i][RACE_textdrawUsebox][11], TEXT_DRAW_FONT_SPRITE_DRAW);
+        TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawUsebox][11], true);
+
+        RACE_pInfo[i][RACE_textdrawUsebox][12] = TextDrawCreate(372.000, 74.000, "LD_BEAT:chit");
+        TextDrawTextSize(RACE_pInfo[i][RACE_textdrawUsebox][12], 16.000, 16.000);
+        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawUsebox][12], TEXT_DRAW_ALIGN_LEFT);
+        TextDrawColour(RACE_pInfo[i][RACE_textdrawUsebox][12], -1);
+        TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawUsebox][12], 0);
+        TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawUsebox][12], 0);
+        TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawUsebox][12], 255);
+        TextDrawFont(RACE_pInfo[i][RACE_textdrawUsebox][12], TEXT_DRAW_FONT_SPRITE_DRAW);
+        TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawUsebox][12], true);
+
+        RACE_pInfo[i][RACE_textdrawUsebox][13] = TextDrawCreate(255.500, 32.750, "LD_SPAC:white");
+        TextDrawTextSize(RACE_pInfo[i][RACE_textdrawUsebox][13], 129.600, 50.000);
+        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawUsebox][13], TEXT_DRAW_ALIGN_LEFT);
+        TextDrawColour(RACE_pInfo[i][RACE_textdrawUsebox][13], -1);
+        TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawUsebox][13], 0);
+        TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawUsebox][13], 0);
+        TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawUsebox][13], 255);
+        TextDrawFont(RACE_pInfo[i][RACE_textdrawUsebox][13], TEXT_DRAW_FONT_SPRITE_DRAW);
+        TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawUsebox][13], true);
+
+        RACE_pInfo[i][RACE_textdrawUsebox][14] = TextDrawCreate(261.000, 28.000, "LD_SPAC:white");
+        TextDrawTextSize(RACE_pInfo[i][RACE_textdrawUsebox][14], 118.000, 5.200);
+        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawUsebox][14], TEXT_DRAW_ALIGN_LEFT);
+        TextDrawColour(RACE_pInfo[i][RACE_textdrawUsebox][14], 437918463);
+        TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawUsebox][14], 0);
+        TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawUsebox][14], 0);
+        TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawUsebox][14], 255);
+        TextDrawFont(RACE_pInfo[i][RACE_textdrawUsebox][14], TEXT_DRAW_FONT_SPRITE_DRAW);
+        TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawUsebox][14], true);
+
+        RACE_pInfo[i][RACE_textdrawUsebox][15] = TextDrawCreate(256.000, 27.000, "LD_BEAT:chit");
+        TextDrawTextSize(RACE_pInfo[i][RACE_textdrawUsebox][15], 9.000, 9.000);
+        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawUsebox][15], TEXT_DRAW_ALIGN_LEFT);
+        TextDrawColour(RACE_pInfo[i][RACE_textdrawUsebox][15], 437918463);
+        TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawUsebox][15], 0);
+        TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawUsebox][15], 0);
+        TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawUsebox][15], 255);
+        TextDrawFont(RACE_pInfo[i][RACE_textdrawUsebox][15], TEXT_DRAW_FONT_SPRITE_DRAW);
+        TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawUsebox][15], true);
+
+        RACE_pInfo[i][RACE_textdrawUsebox][16] = TextDrawCreate(375.000, 27.000, "LD_BEAT:chit");
+        TextDrawTextSize(RACE_pInfo[i][RACE_textdrawUsebox][16], 9.000, 9.000);
+        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawUsebox][16], TEXT_DRAW_ALIGN_LEFT);
+        TextDrawColour(RACE_pInfo[i][RACE_textdrawUsebox][16], 437918463);
+        TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawUsebox][16], 0);
+        TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawUsebox][16], 0);
+        TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawUsebox][16], 255);
+        TextDrawFont(RACE_pInfo[i][RACE_textdrawUsebox][16], TEXT_DRAW_FONT_SPRITE_DRAW);
+        TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawUsebox][16], true);
+
+        RACE_pInfo[i][RACE_textdrawUsebox][17] = TextDrawCreate(260.000, 79.500, "LD_SPAC:white");
+        TextDrawTextSize(RACE_pInfo[i][RACE_textdrawUsebox][17], 121.000, 5.200);
+        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawUsebox][17], TEXT_DRAW_ALIGN_LEFT);
+        TextDrawColour(RACE_pInfo[i][RACE_textdrawUsebox][17], 437918463);
+        TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawUsebox][17], 0);
+        TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawUsebox][17], 0);
+        TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawUsebox][17], 255);
+        TextDrawFont(RACE_pInfo[i][RACE_textdrawUsebox][17], TEXT_DRAW_FONT_SPRITE_DRAW);
+        TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawUsebox][17], true);
+
+        RACE_pInfo[i][RACE_textdrawUsebox][18] = TextDrawCreate(256.000, 77.000, "LD_BEAT:chit");
+        TextDrawTextSize(RACE_pInfo[i][RACE_textdrawUsebox][18], 9.000, 9.000);
+        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawUsebox][18], TEXT_DRAW_ALIGN_LEFT);
+        TextDrawColour(RACE_pInfo[i][RACE_textdrawUsebox][18], 437918463);
+        TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawUsebox][18], 0);
+        TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawUsebox][18], 0);
+        TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawUsebox][18], 255);
+        TextDrawFont(RACE_pInfo[i][RACE_textdrawUsebox][18], TEXT_DRAW_FONT_SPRITE_DRAW);
+        TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawUsebox][18], true);
+
+        RACE_pInfo[i][RACE_textdrawUsebox][19] = TextDrawCreate(375.000, 77.000, "LD_BEAT:chit");
+        TextDrawTextSize(RACE_pInfo[i][RACE_textdrawUsebox][19], 9.000, 9.000);
+        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawUsebox][19], TEXT_DRAW_ALIGN_LEFT);
+        TextDrawColour(RACE_pInfo[i][RACE_textdrawUsebox][19], 437918463);
+        TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawUsebox][19], 0);
+        TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawUsebox][19], 0);
+        TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawUsebox][19], 255);
+        TextDrawFont(RACE_pInfo[i][RACE_textdrawUsebox][19], TEXT_DRAW_FONT_SPRITE_DRAW);
+        TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawUsebox][19], true);
+
+        RACE_pInfo[i][RACE_textdrawUsebox][20] = TextDrawCreate(257.500, 32.750, "LD_SPAC:white");
+        TextDrawTextSize(RACE_pInfo[i][RACE_textdrawUsebox][20], 125.000, 48.000);
+        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawUsebox][20], TEXT_DRAW_ALIGN_LEFT);
+        TextDrawColour(RACE_pInfo[i][RACE_textdrawUsebox][20], 437918463);
+        TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawUsebox][20], 0);
+        TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawUsebox][20], 0);
+        TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawUsebox][20], 255);
+        TextDrawFont(RACE_pInfo[i][RACE_textdrawUsebox][20], TEXT_DRAW_FONT_SPRITE_DRAW);
+        TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawUsebox][20], true);
+
+        RACE_pInfo[i][RACE_textdrawCircleRed] = TextDrawCreate(260.000, 45.000, "LD_POOL:ball");
+        TextDrawTextSize(RACE_pInfo[i][RACE_textdrawCircleRed], 25.000, 25.000);
+        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawCircleRed], TEXT_DRAW_ALIGN_LEFT);
+        TextDrawColour(RACE_pInfo[i][RACE_textdrawCircleRed], -16777171);
+        TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawCircleRed], 0);
+        TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawCircleRed], 0);
+        TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawCircleRed], 255);
+        TextDrawFont(RACE_pInfo[i][RACE_textdrawCircleRed], TEXT_DRAW_FONT_SPRITE_DRAW);
+        TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawCircleRed], true);
+
+        RACE_pInfo[i][RACE_textdrawCircleYellow] = TextDrawCreate(288.000, 45.000, "LD_POOL:ball");
+        TextDrawTextSize(RACE_pInfo[i][RACE_textdrawCircleYellow], 25.000, 25.000);
+        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawCircleYellow], TEXT_DRAW_ALIGN_LEFT);
+        TextDrawColour(RACE_pInfo[i][RACE_textdrawCircleYellow], -65491);
+        TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawCircleYellow], 0);
+        TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawCircleYellow], 0);
+        TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawCircleYellow], 255);
+        TextDrawFont(RACE_pInfo[i][RACE_textdrawCircleYellow], TEXT_DRAW_FONT_SPRITE_DRAW);
+        TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawCircleYellow], true);
+
+        RACE_pInfo[i][RACE_textdrawCircleGreen] = TextDrawCreate(316.000, 45.000, "LD_POOL:ball");
+        TextDrawTextSize(RACE_pInfo[i][RACE_textdrawCircleGreen], 25.000, 25.000);
+        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawCircleGreen], TEXT_DRAW_ALIGN_LEFT);
+        TextDrawColour(RACE_pInfo[i][RACE_textdrawCircleGreen], 16711725);
+        TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawCircleGreen], 0);
+        TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawCircleGreen], 0);
+        TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawCircleGreen], 255);
+        TextDrawFont(RACE_pInfo[i][RACE_textdrawCircleGreen], TEXT_DRAW_FONT_SPRITE_DRAW);
+        TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawCircleGreen], true);
+
+        RACE_pInfo[i][RACE_textdrawUsebox][21] = TextDrawCreate(343.000, 40.000, "LD_SPAC:white");
+        TextDrawTextSize(RACE_pInfo[i][RACE_textdrawUsebox][21], 37.000, 35.000);
+        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawUsebox][21], TEXT_DRAW_ALIGN_LEFT);
+        TextDrawColour(RACE_pInfo[i][RACE_textdrawUsebox][21], 808464639);
+        TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawUsebox][21], 0);
+        TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawUsebox][21], 0);
+        TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawUsebox][21], 255);
+        TextDrawFont(RACE_pInfo[i][RACE_textdrawUsebox][21], TEXT_DRAW_FONT_SPRITE_DRAW);
+        TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawUsebox][21], true);
+
+        RACE_pInfo[i][RACE_textdrawSecondsLeft] = TextDrawCreate(361.000, 57.000, "- 30s -");
+        TextDrawLetterSize(RACE_pInfo[i][RACE_textdrawSecondsLeft], 0.300, 1.500);
+        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawSecondsLeft], TEXT_DRAW_ALIGN_CENTER);
+        TextDrawColour(RACE_pInfo[i][RACE_textdrawSecondsLeft], -101);
+        TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawSecondsLeft], 0);
+        TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawSecondsLeft], 0);
+        TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawSecondsLeft], 150);
+        TextDrawFont(RACE_pInfo[i][RACE_textdrawSecondsLeft], TEXT_DRAW_FONT_1);
+        TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawSecondsLeft], true);
+
+        RACE_pInfo[i][RACE_textdrawStartIn] = TextDrawCreate(362.000, 45.000, "Iniciando em");
+        TextDrawLetterSize(RACE_pInfo[i][RACE_textdrawStartIn], 0.200, 1.200);
+        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawStartIn], TEXT_DRAW_ALIGN_CENTER);
+        TextDrawColour(RACE_pInfo[i][RACE_textdrawStartIn], -101);
+        TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawStartIn], 0);
+        TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawStartIn], 0);
+        TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawStartIn], 150);
+        TextDrawFont(RACE_pInfo[i][RACE_textdrawStartIn], TEXT_DRAW_FONT_1);
+        TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawStartIn], true);
+
+        RACE_pInfo[i][RACE_textdrawUsebox][22] = TextDrawCreate(263.000, -3.000, "LD_SPAC:white");
+        TextDrawTextSize(RACE_pInfo[i][RACE_textdrawUsebox][22], 4.000, 25.000);
+        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawUsebox][22], TEXT_DRAW_ALIGN_LEFT);
+        TextDrawColour(RACE_pInfo[i][RACE_textdrawUsebox][22], 437918463);
+        TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawUsebox][22], 0);
+        TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawUsebox][22], 0);
+        TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawUsebox][22], 255);
+        TextDrawFont(RACE_pInfo[i][RACE_textdrawUsebox][22], TEXT_DRAW_FONT_SPRITE_DRAW);
+        TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawUsebox][22], true);
+
+        RACE_pInfo[i][RACE_textdrawUsebox][23] = TextDrawCreate(372.000, -3.000, "LD_SPAC:white");
+        TextDrawTextSize(RACE_pInfo[i][RACE_textdrawUsebox][23], 4.000, 25.000);
+        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawUsebox][23], TEXT_DRAW_ALIGN_LEFT);
+        TextDrawColour(RACE_pInfo[i][RACE_textdrawUsebox][23], 437918463);
+        TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawUsebox][23], 0);
+        TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawUsebox][23], 0);
+        TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawUsebox][23], 255);
+        TextDrawFont(RACE_pInfo[i][RACE_textdrawUsebox][23], TEXT_DRAW_FONT_SPRITE_DRAW);
+        TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawUsebox][23], true);
     }
 }
 
 RACE_resetPlayerVariables(playerid)
 {
     RACE_pInfo[playerid][RACE_playerPosition] = 0,
-    RACE_pInfo[playerid][RACE_playerCheckpointsPassed] = 0,
-    RACE_pInfo[playerid][RACE_playerTimeTookToFinish] = 0,
+            RACE_pInfo[playerid][RACE_playerCheckpointsPassed] = 0,
+                    RACE_pInfo[playerid][RACE_playerTimeTookToFinish] = 0,
 
-    RACE_pInfo[playerid][RACE_isPlayerInRace] = false;
+                            RACE_pInfo[playerid][RACE_isPlayerInRace] = false;
 }
 
 RACE_showPlayerRaceTextdraws(playerid)
@@ -205,6 +501,16 @@ RACE_showPlayerRaceTextdraws(playerid)
     TextDrawShowForPlayer(playerid, RACE_pInfo[playerid][RACE_textdrawCheckpoint]);
     TextDrawShowForPlayer(playerid, RACE_pInfo[playerid][RACE_textdrawTimeLeft]);
     TextDrawShowForPlayer(playerid, RACE_pInfo[playerid][RACE_textdrawSpeed]);
+}
+
+RACE_showPlayerSemaforoTextdraws(playerid)
+{
+    for (new i = 0; i < 24; i++) TextDrawShowForPlayer(playerid, RACE_pInfo[playerid][RACE_textdrawUsebox][i]);
+    TextDrawShowForPlayer(playerid, RACE_pInfo[playerid][RACE_textdrawCircleRed]);
+    TextDrawShowForPlayer(playerid, RACE_pInfo[playerid][RACE_textdrawCircleYellow]);
+    TextDrawShowForPlayer(playerid, RACE_pInfo[playerid][RACE_textdrawCircleGreen]);
+    TextDrawShowForPlayer(playerid, RACE_pInfo[playerid][RACE_textdrawSecondsLeft]);
+    TextDrawShowForPlayer(playerid, RACE_pInfo[playerid][RACE_textdrawStartIn]);
 }
 
 RACE_hidePlayerRaceTextdraws(playerid)
@@ -495,6 +801,18 @@ public RACE_hidePlayerTip(playerid, text[])
     return 1;
 }
 
+forward RACE_hidePlayerSemaforoTextdraws(playerid);
+public RACE_hidePlayerSemaforoTextdraws(playerid)
+{
+    // SEMAFORO TD's
+    for (new i = 0; i < 24; i++) TextDrawHideForPlayer(playerid, RACE_pInfo[playerid][RACE_textdrawUsebox][i]);
+    TextDrawHideForPlayer(playerid, RACE_pInfo[playerid][RACE_textdrawCircleRed]);
+    TextDrawHideForPlayer(playerid, RACE_pInfo[playerid][RACE_textdrawCircleYellow]);
+    TextDrawHideForPlayer(playerid, RACE_pInfo[playerid][RACE_textdrawCircleGreen]);
+    TextDrawHideForPlayer(playerid, RACE_pInfo[playerid][RACE_textdrawSecondsLeft]);
+    TextDrawHideForPlayer(playerid, RACE_pInfo[playerid][RACE_textdrawStartIn]);
+}
+
 forward RACE_createVehicle(playerid, vehicleid, Float:X, Float:Y, Float:Z, Float:A, pInterior, pVirtualWorld);
 public RACE_createVehicle(playerid, vehicleid, Float:X, Float:Y, Float:Z, Float:A, pInterior, pVirtualWorld)
 {
@@ -570,7 +888,7 @@ public RACE_prepareEvent(RaceID)
     RACE_countDown();
 
     RACE_globalString[0] = '\0';
-    format(RACE_globalString, sizeof(RACE_globalString), "[CORRIDA]{FFFFFF} %s A corrida esta prestes a iniciar em 30 segundos. Use {00ff80}/race{FFFFFF} para participar!", RACE_rInfo[RACE_runningID][0][raceName]);
+    format(RACE_globalString, sizeof(RACE_globalString), "[CORRIDA]{FFFFFF} A corrida %s esta prestes a iniciar em 30 segundos. Use {00ff80}/race{FFFFFF} para participar!", RACE_rInfo[RACE_runningID][0][raceName]);
     SendClientMessageToAll(0x00ff8000, RACE_globalString);
 
     GameTextForAll("~w~Uma corrida ~g~iniciou!", 3000, 3);
@@ -638,7 +956,7 @@ public RACE_finishEvent(reason)
             DestroyVehicle(RACE_pInfo[i][RACE_playerVehicle]);
             RACE_pInfo[i][RACE_playerVehicle] = -1;
 
-            SpawnPlayer(i);
+            // SpawnPlayer(i);
 
             RACE_pInfo[i][RACE_isPlayerInRace] = false;
         }
@@ -714,7 +1032,7 @@ public RACE_countDown()
                         SetPlayerCheckpoint(i, RACE_rInfo[runID][1][raceCheckpointPositionX], RACE_rInfo[runID][1][raceCheckpointPositionY], RACE_rInfo[runID][1][raceCheckpointPositionZ], 0.0);
 
                         GameTextForPlayer(i, "~n~~g~Go!", 2000, 3);
-                        PlayerPlaySound(i, 1057, 0.0, 0.0, 0.0);
+                        PlayerPlaySound(i, 3200, 0.0, 0.0, 0.0);
 
                         TogglePlayerControllable(i, true);
 
@@ -746,33 +1064,51 @@ public RACE_countDown()
         case 1:
         {
             RACE_globalString[0] = '\0';
-            format(RACE_globalString, sizeof(RACE_globalString), "~w~Evento de corrida~n~iniciando em~g~~n~- %d -~w~~n~segundo", RACE_timerCounter);
+            format(RACE_globalString, sizeof(RACE_globalString), "~g~- %ds -", RACE_timerCounter);
 
             foreach (new i : Player)
             {
                 if (RACE_pInfo[i][RACE_isPlayerInRace])
                 {
                     PlayerPlaySound(i, 1056, 0.0, 0.0, 0.0);
-                    GameTextForPlayer(i, RACE_globalString, 800, 3);
-
+                    TextDrawSetString(RACE_pInfo[i][RACE_textdrawSecondsLeft], RACE_globalString);
+                    TextDrawColour(RACE_pInfo[i][RACE_textdrawCircleGreen], 0x00FF00FF);
+                    TextDrawShowForPlayer(i, RACE_pInfo[i][RACE_textdrawCircleGreen]);
                     TogglePlayerControllable(i, false);
+                    SetTimerEx("RACE_hidePlayerSemaforoTextdraws", 800, false, "d", i);
                 }
             }
         }
-        case 2, 3:
+        case 2:
         {
             RACE_globalString[0] = '\0';
-            format(RACE_globalString, sizeof(RACE_globalString), "~w~Evento de corrida~n~iniciando em~g~~n~- %d -~w~~n~segundos", RACE_timerCounter);
+            format(RACE_globalString, sizeof(RACE_globalString), "~g~- %ds -", RACE_timerCounter);
 
             foreach (new i : Player)
             {
                 if (RACE_pInfo[i][RACE_isPlayerInRace])
                 {
                     PlayerPlaySound(i, 1056, 0.0, 0.0, 0.0);
-                    GameTextForPlayer(i, RACE_globalString, 800, 3);
+                    TextDrawSetString(RACE_pInfo[i][RACE_textdrawSecondsLeft], RACE_globalString);
+                    TextDrawColour(RACE_pInfo[i][RACE_textdrawCircleYellow], 0xFFFF00FF);
+                    TextDrawShowForPlayer(i, RACE_pInfo[i][RACE_textdrawCircleYellow]);
+                }
+            }
+        }
+        case 3:
+        {
+            RACE_globalString[0] = '\0';
+            format(RACE_globalString, sizeof(RACE_globalString), "~g~- %ds -", RACE_timerCounter);
 
+            foreach (new i : Player)
+            {
+                if (RACE_pInfo[i][RACE_isPlayerInRace])
+                {
+                    PlayerPlaySound(i, 1056, 0.0, 0.0, 0.0);
+                    TextDrawSetString(RACE_pInfo[i][RACE_textdrawSecondsLeft], RACE_globalString);
+                    TextDrawColour(RACE_pInfo[i][RACE_textdrawCircleRed], 0xFF0000FF);
+                    TextDrawShowForPlayer(i, RACE_pInfo[i][RACE_textdrawCircleRed]);
                     SetCameraBehindPlayer(i);
-
                     TogglePlayerControllable(i, false);
                 }
             }
@@ -780,15 +1116,16 @@ public RACE_countDown()
         default:
         {
             RACE_globalString[0] = '\0';
-            format(RACE_globalString, sizeof(RACE_globalString), "~w~Evento de corrida~n~iniciando em~r~~n~- %d -~w~~n~segundos", RACE_timerCounter);
+            format(RACE_globalString, sizeof(RACE_globalString), "~r~- %ds -", RACE_timerCounter);
 
             foreach (new i : Player)
             {
                 if (RACE_pInfo[i][RACE_isPlayerInRace])
                 {
-                    GameTextForPlayer(i, RACE_globalString, 800, 3);
-
+                    RACE_showPlayerSemaforoTextdraws(i);
+                    TextDrawSetString(RACE_pInfo[i][RACE_textdrawSecondsLeft], RACE_globalString);
                     TogglePlayerControllable(i, false);
+                    LimparChat(i);
                 }
             }
 
@@ -885,7 +1222,7 @@ public RACE_playerFinishedTheRace(playerid)
             RACE_pInfo[playerid][RACE_playerTimeTookToFinish] = GetTickCount() - RACE_pInfo[playerid][RACE_playerTimeTookToFinish];
 
             RACE_globalString[0] = '\0';
-            format(RACE_globalString, sizeof(RACE_globalString), "[CORRIDA]{FFFFFF} Voce terminou %dth em '{00ff80}%i:%02i.%03i{FFFFFF}' segundos.", RACE_pInfo[playerid][RACE_playerPosition], RACE_pInfo[playerid][RACE_playerTimeTookToFinish] / 60000, ((RACE_pInfo[playerid][RACE_playerTimeTookToFinish] / 1000) % 60), RACE_pInfo[playerid][RACE_playerTimeTookToFinish] % 1000);
+            format(RACE_globalString, sizeof(RACE_globalString), "[CORRIDA]{FFFFFF} Voce terminou em %dº '{00ff80}%i:%02i.%03i{FFFFFF}' segundos.", RACE_pInfo[playerid][RACE_playerPosition], RACE_pInfo[playerid][RACE_playerTimeTookToFinish] / 60000, ((RACE_pInfo[playerid][RACE_playerTimeTookToFinish] / 1000) % 60), RACE_pInfo[playerid][RACE_playerTimeTookToFinish] % 1000);
             SendClientMessage(playerid, 0x00ff8000, RACE_globalString);
         }
     }
@@ -900,7 +1237,7 @@ public RACE_playerFinishedTheRace(playerid)
     DestroyVehicle(RACE_pInfo[playerid][RACE_playerVehicle]);
     RACE_pInfo[playerid][RACE_playerVehicle] = -1;
 
-    SpawnPlayer(playerid);
+    // SpawnPlayer(playerid);
 
     RACE_pInfo[playerid][RACE_isPlayerInRace] = false;
     return 1;
@@ -1361,7 +1698,7 @@ CMD:race(playerid)
 
     if (RACE_isRaceStarted) return SendClientMessage(playerid, 0xFF0000FF, "ERRO {B0B0B0}»{FFFFFF} A corrida ja iniciou.");
     if (!RACE_isRaceInLobby) return SendClientMessage(playerid, 0xFF0000FF, "ERRO {B0B0B0}»{FFFFFF} Nao ha corrida em andamento no momento.");
-    if (RACE_playersSpawned > 15) return SendClientMessage(playerid, 0xFF0000FF, "ERRO {B0B0B0}»{FFFFFF} A corrida nAo pode adicionar mais jogadores. Experimente a proxima.");
+    if (RACE_playersSpawned > 15) return SendClientMessage(playerid, 0xFF0000FF, "ERRO {B0B0B0}»{FFFFFF} A corrida nao pode adicionar mais jogadores. Experimente a proxima.");
 
     RACE_globalString[0] = '\0';
     format(RACE_globalString, sizeof(RACE_globalString), "[CORRIDA]{FFFFFF} %s(%d) entrou na corrida. (%d/16) (/race)", RACE_pInfo[playerid][RACE_playerUsername], playerid, RACE_playersInEvent + 1);

@@ -20,7 +20,7 @@ public OnPlayerStateChange(playerid, PLAYER_STATE:newstate, PLAYER_STATE:oldstat
     {
         StopAudioStreamForPlayer(playerid);
     }
-    return 0;
+    return 1;
 }
 
 //-------------------------------------------------

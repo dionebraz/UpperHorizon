@@ -31,7 +31,7 @@ public OnGameModeInit()
     AddPlayerClass(0, 2495.3547, -1688.2319, 13.6774, 351.1646);
     AddStaticVehicle(522, 2493.7583, -1683.6482, 12.9099, 270.8069, -1, -1);
     SetGameModeText("Upper Horizon v0.1");
-    SendRconCommand("language PT-BR");
+    SendRconCommand("language Portugues - Brasil");
     SendRconCommand("hostname Upper Horizon");
     SendRconCommand("mapname Brasil");
     return 1;
@@ -81,6 +81,20 @@ public OnPlayerSpawn(playerid)
         |_|
 */
 
+// RÁDIO - CARROS
+public OnPlayerStateChange(playerid, PLAYER_STATE:newstate, PLAYER_STATE:oldstate)
+{
+    if (newstate == PLAYER_STATE_DRIVER || newstate == PLAYER_STATE_PASSENGER)
+    {
+        PlayAudioStreamForPlayer(playerid, "https://live.hunter.fm/hitsbrasil_high", 0.0, 0.0, 0.0, 0.0, false);
+    }
+    else if (oldstate == PLAYER_STATE_DRIVER || oldstate == PLAYER_STATE_PASSENGER)
+    {
+        StopAudioStreamForPlayer(playerid);
+    }
+    return 1;
+}
+
 public OnPlayerText(playerid, text[])
 {
     if (strlen(text) > 0 && strlen(text) <= MAX_CHAT_LENGTH)
@@ -120,8 +134,8 @@ stock SpawnPlayerPier(playerid)
     TogglePlayerSpectating(playerid, false);
     TogglePlayerControllable(playerid, true);
     CancelSelectTextDraw(playerid);
-    SetSpawnInfo(playerid, 0, 171, 369.7811, -2050.6787, 7.8359, 359.9895, WEAPON_SAWEDOFF, 0, WEAPON_UZI, 0, WEAPON_FIST, 0);
-    SetPlayerSkin(playerid, 7);
+    SetSpawnInfo(playerid, 0, 154, 369.7811, -2050.6787, 7.8359, 359.9895, WEAPON_SAWEDOFF, 0, WEAPON_UZI, 0, WEAPON_FIST, 0);
+    SetPlayerSkin(playerid, 154);
     SpawnPlayer(playerid);
     SetCameraBehindPlayer(playerid);
     LimparChat(playerid);
