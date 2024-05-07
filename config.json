@@ -4,7 +4,7 @@
         "cdn": "",
         "enable": true,
         "models_path": "models",
-        "port": 7777,
+        "port": 7803,
         "web_server_bind": ""
     },
     "banners": {
@@ -94,12 +94,14 @@
     "password": "",
     "pawn": {
         "legacy_plugins": [
-            "sscanf"
+            "sscanf.so"
         ],
         "main_scripts": [
             "UpperHorizon"
         ],
-        "side_scripts": []
+        "side_scripts": [
+            "filterscripts/flymode"
+        ]
     },
     "rcon": {
         "allow_teleport": false,

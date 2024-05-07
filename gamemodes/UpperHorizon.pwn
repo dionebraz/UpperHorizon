@@ -14,6 +14,9 @@
 #define MAX_CHAT_LENGTH         (144)
 #define CHAT_DISTANCE           (20.0)
 
+//---------------- SISTEMAS ----------------
+#include "../systems/iradio.pwn"
+
 main()
 {
     printf(" ");
@@ -80,20 +83,6 @@ public OnPlayerSpawn(playerid)
     |___/ .__/\___\__|_\__,_|_|_/__/\__|
         |_|
 */
-
-// RÁDIO - CARROS
-public OnPlayerStateChange(playerid, PLAYER_STATE:newstate, PLAYER_STATE:oldstate)
-{
-    if (newstate == PLAYER_STATE_DRIVER || newstate == PLAYER_STATE_PASSENGER)
-    {
-        PlayAudioStreamForPlayer(playerid, "https://live.hunter.fm/hitsbrasil_high", 0.0, 0.0, 0.0, 0.0, false);
-    }
-    else if (oldstate == PLAYER_STATE_DRIVER || oldstate == PLAYER_STATE_PASSENGER)
-    {
-        StopAudioStreamForPlayer(playerid);
-    }
-    return 1;
-}
 
 public OnPlayerText(playerid, text[])
 {
