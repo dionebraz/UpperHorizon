@@ -117,22 +117,22 @@ RACE_loadTextdraws()
 
         RACE_pInfo[i][RACE_textdrawTip] = TextDrawCreate(143.367523, 359.916778, "Test message");
         TextDrawLetterSize(RACE_pInfo[i][RACE_textdrawTip], 0.283672, 1.570829);
-        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawTip], 1);
-        TextDrawColor(RACE_pInfo[i][RACE_textdrawTip], -1);
+        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawTip], TEXT_DRAW_ALIGN_LEFT);
+        TextDrawColour(RACE_pInfo[i][RACE_textdrawTip], -1);
         TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawTip], 0);
         TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawTip], 1);
-        TextDrawBackgroundColor(RACE_pInfo[i][RACE_textdrawTip], 51);
-        TextDrawFont(RACE_pInfo[i][RACE_textdrawTip], 1);
-        TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawTip], 1);
+        TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawTip], 51);
+        TextDrawFont(RACE_pInfo[i][RACE_textdrawTip], TEXT_DRAW_FONT_1);
+        TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawTip], true);
 
         RACE_pInfo[i][RACE_textdrawTip2] = TextDrawCreate(143.367523, 359.916778, "Test message");
         TextDrawLetterSize(RACE_pInfo[i][RACE_textdrawTip2], 0.283672, 1.570829);
-        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawTip2], 1);
-        TextDrawColor(RACE_pInfo[i][RACE_textdrawTip2], -1);
+        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawTip2], TEXT_DRAW_ALIGN_LEFT);
+        TextDrawColour(RACE_pInfo[i][RACE_textdrawTip2], -1);
         TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawTip2], 0);
         TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawTip2], 1);
-        TextDrawBackgroundColor(RACE_pInfo[i][RACE_textdrawTip2], 51);
-        TextDrawFont(RACE_pInfo[i][RACE_textdrawTip2], 1);
+        TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawTip2], 51);
+        TextDrawFont(RACE_pInfo[i][RACE_textdrawTip2], TEXT_DRAW_FONT_1);
 
         // SEMAFORO TEXTDRAW COM CONTAGEM
 
