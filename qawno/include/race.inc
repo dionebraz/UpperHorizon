@@ -113,6 +113,27 @@ RACE_loadTextdraws()
 {
     for (new i = 0; i < MAX_PLAYERS; i++)
     {
+        // TIPS - TEST MESSAGE
+
+        RACE_pInfo[i][RACE_textdrawTip] = TextDrawCreate(143.367523, 359.916778, "Test message");
+        TextDrawLetterSize(RACE_pInfo[i][RACE_textdrawTip], 0.283672, 1.570829);
+        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawTip], 1);
+        TextDrawColor(RACE_pInfo[i][RACE_textdrawTip], -1);
+        TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawTip], 0);
+        TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawTip], 1);
+        TextDrawBackgroundColor(RACE_pInfo[i][RACE_textdrawTip], 51);
+        TextDrawFont(RACE_pInfo[i][RACE_textdrawTip], 1);
+        TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawTip], 1);
+
+        RACE_pInfo[i][RACE_textdrawTip2] = TextDrawCreate(143.367523, 359.916778, "Test message");
+        TextDrawLetterSize(RACE_pInfo[i][RACE_textdrawTip2], 0.283672, 1.570829);
+        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawTip2], 1);
+        TextDrawColor(RACE_pInfo[i][RACE_textdrawTip2], -1);
+        TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawTip2], 0);
+        TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawTip2], 1);
+        TextDrawBackgroundColor(RACE_pInfo[i][RACE_textdrawTip2], 51);
+        TextDrawFont(RACE_pInfo[i][RACE_textdrawTip2], 1);
+
         // SEMAFORO TEXTDRAW COM CONTAGEM
 
         RACE_pInfo[i][RACE_textdrawUsebox][0] = TextDrawCreate(260.000, 21.750, "LD_SPAC:white");
