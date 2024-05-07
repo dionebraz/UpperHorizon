@@ -29,7 +29,6 @@ enum RACE_playerInfo
     RACE_playerCheckpointsPassed,
     RACE_playerTimeTookToFinish,
 
-    Text:RACE_textdrawBar,
     Text:RACE_textdrawBox,
     Text:RACE_textdrawTitle,
     Text:RACE_textdrawName,
@@ -44,9 +43,6 @@ enum RACE_playerInfo
     Text:RACE_textdrawStartIn,
 
     bool:RACE_isPlayerInRace,
-
-    Text:RACE_textdrawTip,
-    Text:RACE_textdrawTip2,
 
     Text:RACE_textdrawUsebox[24],
     Text:RACE_textdrawRaceHud[22]
@@ -113,27 +109,6 @@ RACE_loadTextdraws()
 {
     for (new i = 0; i < MAX_PLAYERS; i++)
     {
-        // TIPS - TEST MESSAGE
-
-        RACE_pInfo[i][RACE_textdrawTip] = TextDrawCreate(143.367523, 359.916778, "Test message");
-        TextDrawLetterSize(RACE_pInfo[i][RACE_textdrawTip], 0.283672, 1.570829);
-        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawTip], TEXT_DRAW_ALIGN_LEFT);
-        TextDrawColour(RACE_pInfo[i][RACE_textdrawTip], -1);
-        TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawTip], 0);
-        TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawTip], 1);
-        TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawTip], 51);
-        TextDrawFont(RACE_pInfo[i][RACE_textdrawTip], TEXT_DRAW_FONT_1);
-        TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawTip], true);
-
-        RACE_pInfo[i][RACE_textdrawTip2] = TextDrawCreate(143.367523, 359.916778, "Test message");
-        TextDrawLetterSize(RACE_pInfo[i][RACE_textdrawTip2], 0.283672, 1.570829);
-        TextDrawAlignment(RACE_pInfo[i][RACE_textdrawTip2], TEXT_DRAW_ALIGN_LEFT);
-        TextDrawColour(RACE_pInfo[i][RACE_textdrawTip2], -1);
-        TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawTip2], 0);
-        TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawTip2], 1);
-        TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawTip2], 51);
-        TextDrawFont(RACE_pInfo[i][RACE_textdrawTip2], TEXT_DRAW_FONT_1);
-
         // SEMAFORO TEXTDRAW COM CONTAGEM
 
         RACE_pInfo[i][RACE_textdrawUsebox][0] = TextDrawCreate(260.000, 21.750, "LD_SPAC:white");
@@ -944,29 +919,6 @@ RACE_updateRace(race)
     return 1;
 }
 
-forward RACE_showPlayerTip(playerid, text[], time);
-public RACE_showPlayerTip(playerid, text[], time)
-{
-    TextDrawHideForPlayer(playerid, RACE_pInfo[playerid][RACE_textdrawTip]);
-    TextDrawHideForPlayer(playerid, RACE_pInfo[playerid][RACE_textdrawTip2]);
-
-    TextDrawSetString(RACE_pInfo[playerid][RACE_textdrawTip], text);
-    TextDrawSetString(RACE_pInfo[playerid][RACE_textdrawTip2], text);
-    TextDrawShowForPlayer(playerid, RACE_pInfo[playerid][RACE_textdrawTip]);
-    TextDrawShowForPlayer(playerid, RACE_pInfo[playerid][RACE_textdrawTip2]);
-
-    SetTimerEx("RACE_hidePlayerTip", time, false, "d", playerid);
-    return 1;
-}
-
-forward RACE_hidePlayerTip(playerid, text[]);
-public RACE_hidePlayerTip(playerid, text[])
-{
-    TextDrawHideForPlayer(playerid, RACE_pInfo[playerid][RACE_textdrawTip]);
-    TextDrawHideForPlayer(playerid, RACE_pInfo[playerid][RACE_textdrawTip2]);
-    return 1;
-}
-
 forward RACE_hidePlayerSemaforoTextdraws(playerid);
 public RACE_hidePlayerSemaforoTextdraws(playerid)
 {
@@ -1243,9 +1195,6 @@ public RACE_countDown()
                         DisableRemoteVehicleCollisions(i, true);
 
                         RACE_pInfo[i][RACE_playerTimeTookToFinish] = GetTickCount();
-
-                        format(RACE_globalString, sizeof(RACE_globalString), "A corrida iniciou com ~g~%d~w~ jogadores.~n~Use ~r~/exitrace~w~ se quiser sair.~n~Boa sorte!", RACE_playersSpawned);
-                        RACE_showPlayerTip(i, RACE_globalString, 10000);
 
                         SetCameraBehindPlayer(i);
                     }
