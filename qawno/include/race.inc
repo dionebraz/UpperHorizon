@@ -114,6 +114,7 @@ RACE_loadTextdraws()
     for (new i = 0; i < MAX_PLAYERS; i++)
     {
         // SEMAFORO TEXTDRAW COM CONTAGEM
+
         RACE_pInfo[i][RACE_textdrawUsebox][0] = TextDrawCreate(260.000, 21.750, "LD_SPAC:white");
         TextDrawTextSize(RACE_pInfo[i][RACE_textdrawUsebox][0], 120.000, 18.200);
         TextDrawAlignment(RACE_pInfo[i][RACE_textdrawUsebox][0], TEXT_DRAW_ALIGN_LEFT);
@@ -405,275 +406,6 @@ RACE_loadTextdraws()
         TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawUsebox][23], true);
 
         // HUD COM INFORMAÇÕES DA CORRIDA
-        // RACE_pInfo[i][RACE_textdrawRaceHud][0] = TextDrawCreate(30.000, 10.000, "~g~Checkpoint:~w~");
-        // TextDrawLetterSize(RACE_pInfo[i][RACE_textdrawRaceHud][0], 0.750, 3.500);
-        // TextDrawAlignment(RACE_pInfo[i][RACE_textdrawRaceHud][0], TEXT_DRAW_ALIGN_LEFT);
-        // TextDrawColour(RACE_pInfo[i][RACE_textdrawRaceHud][0], -1);
-        // TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawRaceHud][0], 0);
-        // TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawRaceHud][0], 0);
-        // TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawRaceHud][0], 150);
-        // TextDrawFont(RACE_pInfo[i][RACE_textdrawRaceHud][0], TEXT_DRAW_FONT_2);
-        // TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawRaceHud][0], true);
-
-        // RACE_pInfo[i][RACE_textdrawRaceHud][1] = TextDrawCreate(524.000, 210.000, "LD_SPAC:white");
-        // TextDrawTextSize(RACE_pInfo[i][RACE_textdrawRaceHud][1], 16.000, 16.000);
-        // TextDrawAlignment(RACE_pInfo[i][RACE_textdrawRaceHud][1], TEXT_DRAW_ALIGN_LEFT);
-        // TextDrawColour(RACE_pInfo[i][RACE_textdrawRaceHud][1], -1);
-        // TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawRaceHud][1], 0);
-        // TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawRaceHud][1], 0);
-        // TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawRaceHud][1], 255);
-        // TextDrawFont(RACE_pInfo[i][RACE_textdrawRaceHud][1], TEXT_DRAW_FONT_SPRITE_DRAW);
-        // TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawRaceHud][1], true);
-
-        // RACE_pInfo[i][RACE_textdrawRaceHud][2] = TextDrawCreate(540.000, 210.000, "LD_SPAC:white");
-        // TextDrawTextSize(RACE_pInfo[i][RACE_textdrawRaceHud][2], 70.000, 16.000);
-        // TextDrawAlignment(RACE_pInfo[i][RACE_textdrawRaceHud][2], TEXT_DRAW_ALIGN_LEFT);
-        // TextDrawColour(RACE_pInfo[i][RACE_textdrawRaceHud][2], 437918463);
-        // TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawRaceHud][2], 0);
-        // TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawRaceHud][2], 0);
-        // TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawRaceHud][2], 255);
-        // TextDrawFont(RACE_pInfo[i][RACE_textdrawRaceHud][2], TEXT_DRAW_FONT_SPRITE_DRAW);
-        // TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawRaceHud][2], true);
-
-        // RACE_pInfo[i][RACE_textdrawRaceHud][3] = TextDrawCreate(532.000, 211.000, "4");
-        // TextDrawLetterSize(RACE_pInfo[i][RACE_textdrawRaceHud][3], 0.350, 1.500);
-        // TextDrawAlignment(RACE_pInfo[i][RACE_textdrawRaceHud][3], TEXT_DRAW_ALIGN_CENTER);
-        // TextDrawColour(RACE_pInfo[i][RACE_textdrawRaceHud][3], 437918463);
-        // TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawRaceHud][3], 0);
-        // TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawRaceHud][3], 0);
-        // TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawRaceHud][3], 150);
-        // TextDrawFont(RACE_pInfo[i][RACE_textdrawRaceHud][3], TEXT_DRAW_FONT_3);
-        // TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawRaceHud][3], true);
-
-        // RACE_pInfo[i][RACE_textdrawRaceHud][4] = TextDrawCreate(544.000, 212.000, "~w~"); //Nome Player
-        // TextDrawLetterSize(RACE_pInfo[i][RACE_textdrawRaceHud][4], 0.250, 1.200);
-        // TextDrawAlignment(RACE_pInfo[i][RACE_textdrawRaceHud][4], TEXT_DRAW_ALIGN_LEFT);
-        // TextDrawColour(RACE_pInfo[i][RACE_textdrawRaceHud][4], -1);
-        // TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawRaceHud][4], 0);
-        // TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawRaceHud][4], 0);
-        // TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawRaceHud][4], 150);
-        // TextDrawFont(RACE_pInfo[i][RACE_textdrawRaceHud][4], TEXT_DRAW_FONT_1);
-        // TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawRaceHud][4], true);
-
-        // RACE_pInfo[i][RACE_textdrawRaceHud][5] = TextDrawCreate(524.000, 150.000, "LD_SPAC:white");
-        // TextDrawTextSize(RACE_pInfo[i][RACE_textdrawRaceHud][5], 16.000, 16.000);
-        // TextDrawAlignment(RACE_pInfo[i][RACE_textdrawRaceHud][5], TEXT_DRAW_ALIGN_LEFT);
-        // TextDrawColour(RACE_pInfo[i][RACE_textdrawRaceHud][5], -1);
-        // TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawRaceHud][5], 0);
-        // TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawRaceHud][5], 0);
-        // TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawRaceHud][5], 255);
-        // TextDrawFont(RACE_pInfo[i][RACE_textdrawRaceHud][5], TEXT_DRAW_FONT_SPRITE_DRAW);
-        // TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawRaceHud][5], true);
-
-        // RACE_pInfo[i][RACE_textdrawRaceHud][6] = TextDrawCreate(540.000, 150.000, "LD_SPAC:white");
-        // TextDrawTextSize(RACE_pInfo[i][RACE_textdrawRaceHud][6], 70.000, 16.000);
-        // TextDrawAlignment(RACE_pInfo[i][RACE_textdrawRaceHud][6], TEXT_DRAW_ALIGN_LEFT);
-        // TextDrawColour(RACE_pInfo[i][RACE_textdrawRaceHud][6], 437918463);
-        // TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawRaceHud][6], 0);
-        // TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawRaceHud][6], 0);
-        // TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawRaceHud][6], 255);
-        // TextDrawFont(RACE_pInfo[i][RACE_textdrawRaceHud][6], TEXT_DRAW_FONT_SPRITE_DRAW);
-        // TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawRaceHud][6], true);
-
-        // RACE_pInfo[i][RACE_textdrawRaceHud][7] = TextDrawCreate(532.000, 151.000, "1");
-        // TextDrawLetterSize(RACE_pInfo[i][RACE_textdrawRaceHud][7], 0.350, 1.500);
-        // TextDrawAlignment(RACE_pInfo[i][RACE_textdrawRaceHud][7], TEXT_DRAW_ALIGN_CENTER);
-        // TextDrawColour(RACE_pInfo[i][RACE_textdrawRaceHud][7], 437918463);
-        // TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawRaceHud][7], 0);
-        // TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawRaceHud][7], 0);
-        // TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawRaceHud][7], 150);
-        // TextDrawFont(RACE_pInfo[i][RACE_textdrawRaceHud][7], TEXT_DRAW_FONT_3);
-        // TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawRaceHud][7], true);
-
-        // RACE_pInfo[i][RACE_textdrawRaceHud][8] = TextDrawCreate(544.000, 152.000, "~w~"); //Nome Player
-        // TextDrawLetterSize(RACE_pInfo[i][RACE_textdrawRaceHud][8], 0.250, 1.200);
-        // TextDrawAlignment(RACE_pInfo[i][RACE_textdrawRaceHud][8], TEXT_DRAW_ALIGN_LEFT);
-        // TextDrawColour(RACE_pInfo[i][RACE_textdrawRaceHud][8], -1);
-        // TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawRaceHud][8], 0);
-        // TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawRaceHud][8], 0);
-        // TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawRaceHud][8], 150);
-        // TextDrawFont(RACE_pInfo[i][RACE_textdrawRaceHud][8], TEXT_DRAW_FONT_1);
-        // TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawRaceHud][8], true);
-
-        // RACE_pInfo[i][RACE_textdrawRaceHud][9] = TextDrawCreate(524.000, 170.000, "LD_SPAC:white");
-        // TextDrawTextSize(RACE_pInfo[i][RACE_textdrawRaceHud][9], 16.000, 16.000);
-        // TextDrawAlignment(RACE_pInfo[i][RACE_textdrawRaceHud][9], TEXT_DRAW_ALIGN_LEFT);
-        // TextDrawColour(RACE_pInfo[i][RACE_textdrawRaceHud][9], -1);
-        // TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawRaceHud][9], 0);
-        // TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawRaceHud][9], 0);
-        // TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawRaceHud][9], 255);
-        // TextDrawFont(RACE_pInfo[i][RACE_textdrawRaceHud][9], TEXT_DRAW_FONT_SPRITE_DRAW);
-        // TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawRaceHud][9], true);
-
-        // RACE_pInfo[i][RACE_textdrawRaceHud][10] = TextDrawCreate(540.000, 170.000, "LD_SPAC:white");
-        // TextDrawTextSize(RACE_pInfo[i][RACE_textdrawRaceHud][10], 70.000, 16.000);
-        // TextDrawAlignment(RACE_pInfo[i][RACE_textdrawRaceHud][10], TEXT_DRAW_ALIGN_LEFT);
-        // TextDrawColour(RACE_pInfo[i][RACE_textdrawRaceHud][10], 437918463);
-        // TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawRaceHud][10], 0);
-        // TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawRaceHud][10], 0);
-        // TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawRaceHud][10], 255);
-        // TextDrawFont(RACE_pInfo[i][RACE_textdrawRaceHud][10], TEXT_DRAW_FONT_SPRITE_DRAW);
-        // TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawRaceHud][10], true);
-
-        // RACE_pInfo[i][RACE_textdrawRaceHud][11] = TextDrawCreate(532.000, 171.000, "2");
-        // TextDrawLetterSize(RACE_pInfo[i][RACE_textdrawRaceHud][11], 0.350, 1.500);
-        // TextDrawAlignment(RACE_pInfo[i][RACE_textdrawRaceHud][11], TEXT_DRAW_ALIGN_CENTER);
-        // TextDrawColour(RACE_pInfo[i][RACE_textdrawRaceHud][11], 437918463);
-        // TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawRaceHud][11], 0);
-        // TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawRaceHud][11], 0);
-        // TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawRaceHud][11], 150);
-        // TextDrawFont(RACE_pInfo[i][RACE_textdrawRaceHud][11], TEXT_DRAW_FONT_3);
-        // TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawRaceHud][11], true);
-
-        // RACE_pInfo[i][RACE_textdrawRaceHud][12] = TextDrawCreate(544.000, 172.000, "~w~"); //Nome Player
-        // TextDrawLetterSize(RACE_pInfo[i][RACE_textdrawRaceHud][12], 0.250, 1.200);
-        // TextDrawAlignment(RACE_pInfo[i][RACE_textdrawRaceHud][12], TEXT_DRAW_ALIGN_LEFT);
-        // TextDrawColour(RACE_pInfo[i][RACE_textdrawRaceHud][12], -1);
-        // TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawRaceHud][12], 0);
-        // TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawRaceHud][12], 0);
-        // TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawRaceHud][12], 150);
-        // TextDrawFont(RACE_pInfo[i][RACE_textdrawRaceHud][12], TEXT_DRAW_FONT_1);
-        // TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawRaceHud][12], true);
-
-        // RACE_pInfo[i][RACE_textdrawRaceHud][13] = TextDrawCreate(524.000, 190.000, "LD_SPAC:white");
-        // TextDrawTextSize(RACE_pInfo[i][RACE_textdrawRaceHud][13], 16.000, 16.000);
-        // TextDrawAlignment(RACE_pInfo[i][RACE_textdrawRaceHud][13], TEXT_DRAW_ALIGN_LEFT);
-        // TextDrawColour(RACE_pInfo[i][RACE_textdrawRaceHud][13], -1);
-        // TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawRaceHud][13], 0);
-        // TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawRaceHud][13], 0);
-        // TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawRaceHud][13], 255);
-        // TextDrawFont(RACE_pInfo[i][RACE_textdrawRaceHud][13], TEXT_DRAW_FONT_SPRITE_DRAW);
-        // TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawRaceHud][13], true);
-
-        // RACE_pInfo[i][RACE_textdrawRaceHud][14] = TextDrawCreate(540.000, 190.000, "LD_SPAC:white");
-        // TextDrawTextSize(RACE_pInfo[i][RACE_textdrawRaceHud][14], 70.000, 16.000);
-        // TextDrawAlignment(RACE_pInfo[i][RACE_textdrawRaceHud][14], TEXT_DRAW_ALIGN_LEFT);
-        // TextDrawColour(RACE_pInfo[i][RACE_textdrawRaceHud][14], 437918463);
-        // TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawRaceHud][14], 0);
-        // TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawRaceHud][14], 0);
-        // TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawRaceHud][14], 255);
-        // TextDrawFont(RACE_pInfo[i][RACE_textdrawRaceHud][14], TEXT_DRAW_FONT_SPRITE_DRAW);
-        // TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawRaceHud][14], true);
-
-        // RACE_pInfo[i][RACE_textdrawRaceHud][15] = TextDrawCreate(532.000, 191.000, "3");
-        // TextDrawLetterSize(RACE_pInfo[i][RACE_textdrawRaceHud][15], 0.350, 1.500);
-        // TextDrawAlignment(RACE_pInfo[i][RACE_textdrawRaceHud][15], TEXT_DRAW_ALIGN_CENTER);
-        // TextDrawColour(RACE_pInfo[i][RACE_textdrawRaceHud][15], 437918463);
-        // TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawRaceHud][15], 0);
-        // TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawRaceHud][15], 0);
-        // TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawRaceHud][15], 150);
-        // TextDrawFont(RACE_pInfo[i][RACE_textdrawRaceHud][15], TEXT_DRAW_FONT_3);
-        // TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawRaceHud][15], true);
-
-        // RACE_pInfo[i][RACE_textdrawRaceHud][16] = TextDrawCreate(544.000, 192.000, "~w~"); //Nome Player
-        // TextDrawLetterSize(RACE_pInfo[i][RACE_textdrawRaceHud][16], 0.250, 1.200);
-        // TextDrawAlignment(RACE_pInfo[i][RACE_textdrawRaceHud][16], TEXT_DRAW_ALIGN_LEFT);
-        // TextDrawColour(RACE_pInfo[i][RACE_textdrawRaceHud][16], -1);
-        // TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawRaceHud][16], 0);
-        // TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawRaceHud][16], 0);
-        // TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawRaceHud][16], 150);
-        // TextDrawFont(RACE_pInfo[i][RACE_textdrawRaceHud][16], TEXT_DRAW_FONT_1);
-        // TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawRaceHud][16], true);
-
-        // RACE_pInfo[i][RACE_textdrawRaceHud][17] = TextDrawCreate(567.000, 116.000, "1st");
-        // TextDrawLetterSize(RACE_pInfo[i][RACE_textdrawRaceHud][17], 0.750, 3.500);
-        // TextDrawAlignment(RACE_pInfo[i][RACE_textdrawRaceHud][17], TEXT_DRAW_ALIGN_CENTER);
-        // TextDrawColour(RACE_pInfo[i][RACE_textdrawRaceHud][17], -1);
-        // TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawRaceHud][17], 0);
-        // TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawRaceHud][17], 0);
-        // TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawRaceHud][17], 150);
-        // TextDrawFont(RACE_pInfo[i][RACE_textdrawRaceHud][17], TEXT_DRAW_FONT_2);
-        // TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawRaceHud][17], true);
-
-        // RACE_pInfo[i][RACE_textdrawRaceHud][18] = TextDrawCreate(25.000, 45.000, "LD_BEAT:chit");
-        // TextDrawTextSize(RACE_pInfo[i][RACE_textdrawRaceHud][18], 24.000, 24.000);
-        // TextDrawAlignment(RACE_pInfo[i][RACE_textdrawRaceHud][18], TEXT_DRAW_ALIGN_LEFT);
-        // TextDrawColour(RACE_pInfo[i][RACE_textdrawRaceHud][18], 437918463);
-        // TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawRaceHud][18], 0);
-        // TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawRaceHud][18], 0);
-        // TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawRaceHud][18], 255);
-        // TextDrawFont(RACE_pInfo[i][RACE_textdrawRaceHud][18], TEXT_DRAW_FONT_SPRITE_DRAW);
-        // TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawRaceHud][18], true);
-
-        // RACE_pInfo[i][RACE_textdrawRaceHud][19] = TextDrawCreate(28.000, 48.000, "LD_BEAT:chit");
-        // TextDrawTextSize(RACE_pInfo[i][RACE_textdrawRaceHud][19], 18.000, 18.000);
-        // TextDrawAlignment(RACE_pInfo[i][RACE_textdrawRaceHud][19], TEXT_DRAW_ALIGN_LEFT);
-        // TextDrawColour(RACE_pInfo[i][RACE_textdrawRaceHud][19], -1);
-        // TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawRaceHud][19], 0);
-        // TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawRaceHud][19], 0);
-        // TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawRaceHud][19], 255);
-        // TextDrawFont(RACE_pInfo[i][RACE_textdrawRaceHud][19], TEXT_DRAW_FONT_SPRITE_DRAW);
-        // TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawRaceHud][19], true);
-
-        // RACE_pInfo[i][RACE_textdrawRaceHud][20] = TextDrawCreate(36.000, 46.000, "LD_SPAC:white");
-        // TextDrawTextSize(RACE_pInfo[i][RACE_textdrawRaceHud][20], 2.000, 3.000);
-        // TextDrawAlignment(RACE_pInfo[i][RACE_textdrawRaceHud][20], TEXT_DRAW_ALIGN_LEFT);
-        // TextDrawColour(RACE_pInfo[i][RACE_textdrawRaceHud][20], 437918463);
-        // TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawRaceHud][20], 0);
-        // TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawRaceHud][20], 0);
-        // TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawRaceHud][20], 255);
-        // TextDrawFont(RACE_pInfo[i][RACE_textdrawRaceHud][20], TEXT_DRAW_FONT_SPRITE_DRAW);
-        // TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawRaceHud][20], true);
-
-        // RACE_pInfo[i][RACE_textdrawRaceHud][21] = TextDrawCreate(34.000, 45.000, "LD_SPAC:white");
-        // TextDrawTextSize(RACE_pInfo[i][RACE_textdrawRaceHud][21], 6.000, 3.000);
-        // TextDrawAlignment(RACE_pInfo[i][RACE_textdrawRaceHud][21], TEXT_DRAW_ALIGN_LEFT);
-        // TextDrawColour(RACE_pInfo[i][RACE_textdrawRaceHud][21], 437918463);
-        // TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawRaceHud][21], 0);
-        // TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawRaceHud][21], 0);
-        // TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawRaceHud][21], 255);
-        // TextDrawFont(RACE_pInfo[i][RACE_textdrawRaceHud][21], TEXT_DRAW_FONT_SPRITE_DRAW);
-        // TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawRaceHud][21], true);
-
-        // RACE_pInfo[i][RACE_textdrawRaceHud][22] = TextDrawCreate(34.000, 54.000, "LD_BEAT:chit");
-        // TextDrawTextSize(RACE_pInfo[i][RACE_textdrawRaceHud][22], 6.000, 6.000);
-        // TextDrawAlignment(RACE_pInfo[i][RACE_textdrawRaceHud][22], TEXT_DRAW_ALIGN_LEFT);
-        // TextDrawColour(RACE_pInfo[i][RACE_textdrawRaceHud][22], 437918463);
-        // TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawRaceHud][22], 0);
-        // TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawRaceHud][22], 0);
-        // TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawRaceHud][22], 255);
-        // TextDrawFont(RACE_pInfo[i][RACE_textdrawRaceHud][22], TEXT_DRAW_FONT_SPRITE_DRAW);
-        // TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawRaceHud][22], true);
-
-        // RACE_pInfo[i][RACE_textdrawRaceHud][23] = TextDrawCreate(36.000, 52.000, "/");
-        // TextDrawLetterSize(RACE_pInfo[i][RACE_textdrawRaceHud][23], -0.310, 0.499);
-        // TextDrawAlignment(RACE_pInfo[i][RACE_textdrawRaceHud][23], TEXT_DRAW_ALIGN_CENTER);
-        // TextDrawColour(RACE_pInfo[i][RACE_textdrawRaceHud][23], 437918463);
-        // TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawRaceHud][23], 0);
-        // TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawRaceHud][23], 0);
-        // TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawRaceHud][23], 150);
-        // TextDrawFont(RACE_pInfo[i][RACE_textdrawRaceHud][23], TEXT_DRAW_FONT_3);
-        // TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawRaceHud][23], true);
-
-        // RACE_pInfo[i][RACE_textdrawRaceHud][24] = TextDrawCreate(49.000, 51.000, "5:00");
-        // TextDrawLetterSize(RACE_pInfo[i][RACE_textdrawRaceHud][24], 0.250, 1.200);
-        // TextDrawAlignment(RACE_pInfo[i][RACE_textdrawRaceHud][24], TEXT_DRAW_ALIGN_LEFT);
-        // TextDrawColour(RACE_pInfo[i][RACE_textdrawRaceHud][24], -1);
-        // TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawRaceHud][24], 0);
-        // TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawRaceHud][24], 0);
-        // TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawRaceHud][24], 150);
-        // TextDrawFont(RACE_pInfo[i][RACE_textdrawRaceHud][24], TEXT_DRAW_FONT_1);
-        // TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawRaceHud][24], true);
-
-        // RACE_pInfo[i][RACE_textdrawRaceHud][25] = TextDrawCreate(30.000, 70.000, "HUD:radar_Flag");
-        // TextDrawTextSize(RACE_pInfo[i][RACE_textdrawRaceHud][25], 10.000, 10.000);
-        // TextDrawAlignment(RACE_pInfo[i][RACE_textdrawRaceHud][25], TEXT_DRAW_ALIGN_LEFT);
-        // TextDrawColour(RACE_pInfo[i][RACE_textdrawRaceHud][25], -1);
-        // TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawRaceHud][25], 0);
-        // TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawRaceHud][25], 0);
-        // TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawRaceHud][25], 255);
-        // TextDrawFont(RACE_pInfo[i][RACE_textdrawRaceHud][25], TEXT_DRAW_FONT_SPRITE_DRAW);
-        // TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawRaceHud][25], true);
-
-        // RACE_pInfo[i][RACE_textdrawRaceHud][26] = TextDrawCreate(44.000, 69.000, "Corrida");
-        // TextDrawLetterSize(RACE_pInfo[i][RACE_textdrawRaceHud][26], 0.250, 1.200);
-        // TextDrawAlignment(RACE_pInfo[i][RACE_textdrawRaceHud][26], TEXT_DRAW_ALIGN_LEFT);
-        // TextDrawColour(RACE_pInfo[i][RACE_textdrawRaceHud][26], -1);
-        // TextDrawSetShadow(RACE_pInfo[i][RACE_textdrawRaceHud][26], 0);
-        // TextDrawSetOutline(RACE_pInfo[i][RACE_textdrawRaceHud][26], 0);
-        // TextDrawBackgroundColour(RACE_pInfo[i][RACE_textdrawRaceHud][26], 150);
-        // TextDrawFont(RACE_pInfo[i][RACE_textdrawRaceHud][26], TEXT_DRAW_FONT_1);
-        // TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawRaceHud][26], true);
 
         RACE_pInfo[i][RACE_textdrawRaceHud][0] = TextDrawCreate(30.000, 10.000, "0/0");
         TextDrawLetterSize(RACE_pInfo[i][RACE_textdrawRaceHud][0], 0.750, 3.500);
@@ -1218,6 +950,7 @@ forward RACE_hidePlayerSemaforoTextdraws(playerid);
 public RACE_hidePlayerSemaforoTextdraws(playerid)
 {
     // SEMAFORO TD's
+
     TextDrawColour(RACE_pInfo[playerid][RACE_textdrawCircleRed], -16777171);
     TextDrawShowForPlayer(playerid, RACE_pInfo[playerid][RACE_textdrawCircleRed]);
     TextDrawColour(RACE_pInfo[playerid][RACE_textdrawCircleYellow], -65491);
@@ -1423,7 +1156,6 @@ public RACE_countDown()
                 for (new i = 0; i < MAX_PLAYERS; i++)
                 {
                     notification.Show(i, "CORRIDA", RACE_globalString, "hud:radar_Flag");
-                    LimparChat(i);
                 }
                 return 1;
             }
@@ -1439,35 +1171,19 @@ public RACE_countDown()
                         RACE_showPlayerRaceHudTextdraws(i);
 
                         RACE_globalString[0] = '\0';
-                        // format(RACE_globalString, sizeof(RACE_globalString), "~g~Nome:~w~ %s", RACE_rInfo[RACE_runningID][0][raceName]);
                         format(RACE_globalString, sizeof(RACE_globalString), "%s", RACE_rInfo[RACE_runningID][0][raceName]);
-                        TextDrawSetString(RACE_pInfo[i][RACE_textdrawName], RACE_globalString);
                         TextDrawSetString(RACE_pInfo[i][RACE_textdrawRaceHud][20], RACE_globalString);
 
-                        // format(RACE_globalString, sizeof(RACE_globalString), "~g~Posicao:~w~ %d/%d", RACE_pInfo[i][RACE_playerPosition], RACE_playersInEvent);
-                        format(RACE_globalString, sizeof(RACE_globalString), "%d", RACE_pInfo[i][RACE_playerPosition], RACE_playersInEvent);
-                        TextDrawSetString(RACE_pInfo[i][RACE_textdrawPosition], RACE_globalString);
+                        switch (RACE_pInfo[i][RACE_playerPosition])
+                        {
+                            case 1: format(RACE_globalString, sizeof(RACE_globalString), "%dst", RACE_pInfo[i][RACE_playerPosition]);
+                            case 2: format(RACE_globalString, sizeof(RACE_globalString), "%dnd", RACE_pInfo[i][RACE_playerPosition]);
+                            case 3: format(RACE_globalString, sizeof(RACE_globalString), "%drd", RACE_pInfo[i][RACE_playerPosition]);
+                            default:
+                                format(RACE_globalString, sizeof(RACE_globalString), "%dth", RACE_pInfo[i][RACE_playerPosition]);
+                        }
 
-                        if (RACE_pInfo[i][RACE_playerPosition] == 1)
-                        {
-                            format(RACE_globalString, sizeof(RACE_globalString), "%dst", RACE_pInfo[i][RACE_playerPosition]);
-                            TextDrawSetString(RACE_pInfo[i][RACE_textdrawRaceHud][17], RACE_globalString);
-                        }
-                        if (RACE_pInfo[i][RACE_playerPosition] == 2)
-                        {
-                            format(RACE_globalString, sizeof(RACE_globalString), "%dnd", RACE_pInfo[i][RACE_playerPosition]);
-                            TextDrawSetString(RACE_pInfo[i][RACE_textdrawRaceHud][17], RACE_globalString);
-                        }
-                        if (RACE_pInfo[i][RACE_playerPosition] == 3)
-                        {
-                            format(RACE_globalString, sizeof(RACE_globalString), "%drd", RACE_pInfo[i][RACE_playerPosition]);
-                            TextDrawSetString(RACE_pInfo[i][RACE_textdrawRaceHud][17], RACE_globalString);
-                        }
-                        else if (RACE_pInfo[i][RACE_playerPosition] > 3)
-                        {
-                            format(RACE_globalString, sizeof(RACE_globalString), "%dth", RACE_pInfo[i][RACE_playerPosition]);
-                            TextDrawSetString(RACE_pInfo[i][RACE_textdrawRaceHud][17], RACE_globalString);
-                        }
+                        TextDrawSetString(RACE_pInfo[i][RACE_textdrawRaceHud][17], RACE_globalString);
 
                         for (new p = 0; p < MAX_PLAYERS; p++)
                         {
@@ -2028,9 +1744,7 @@ public OnPlayerUpdate(playerid)
     {
         if (RACE_pInfo[playerid][RACE_isPlayerInRace])
         {
-            new speed = RACE_getPlayerSpeed(playerid),
-                string[32];
-
+            new speed = RACE_getPlayerSpeed(playerid), string[32];
             format(string, sizeof(string), "~g~Velocidade:~w~ %d KM/H", speed);
             TextDrawSetString(RACE_pInfo[playerid][RACE_textdrawSpeed], string);
         }
@@ -2096,26 +1810,16 @@ public OnPlayerEnterRaceCheckpoint(playerid)
 
                 RACE_globalString[0] = '\0';
 
-                if (RACE_pInfo[playerid][RACE_playerPosition] == 1)
+                switch (RACE_pInfo[i][RACE_playerPosition])
                 {
-                    format(RACE_globalString, sizeof(RACE_globalString), "%dst", RACE_pInfo[playerid][RACE_playerPosition]);
-                    TextDrawSetString(RACE_pInfo[playerid][RACE_textdrawRaceHud][17], RACE_globalString);
+                    case 1: format(RACE_globalString, sizeof(RACE_globalString), "%dst", RACE_pInfo[i][RACE_playerPosition]);
+                    case 2: format(RACE_globalString, sizeof(RACE_globalString), "%dnd", RACE_pInfo[i][RACE_playerPosition]);
+                    case 3: format(RACE_globalString, sizeof(RACE_globalString), "%drd", RACE_pInfo[i][RACE_playerPosition]);
+                    default:
+                        format(RACE_globalString, sizeof(RACE_globalString), "%dth", RACE_pInfo[i][RACE_playerPosition]);
                 }
-                if (RACE_pInfo[playerid][RACE_playerPosition] == 2)
-                {
-                    format(RACE_globalString, sizeof(RACE_globalString), "%dnd", RACE_pInfo[playerid][RACE_playerPosition]);
-                    TextDrawSetString(RACE_pInfo[playerid][RACE_textdrawRaceHud][17], RACE_globalString);
-                }
-                if (RACE_pInfo[playerid][RACE_playerPosition] == 3)
-                {
-                    format(RACE_globalString, sizeof(RACE_globalString), "%drd", RACE_pInfo[playerid][RACE_playerPosition]);
-                    TextDrawSetString(RACE_pInfo[playerid][RACE_textdrawRaceHud][17], RACE_globalString);
-                }
-                else if (RACE_pInfo[playerid][RACE_playerPosition] > 3)
-                {
-                    format(RACE_globalString, sizeof(RACE_globalString), "%dth", RACE_pInfo[playerid][RACE_playerPosition]);
-                    TextDrawSetString(RACE_pInfo[playerid][RACE_textdrawRaceHud][17], RACE_globalString);
-                }
+
+                TextDrawSetString(RACE_pInfo[i][RACE_textdrawRaceHud][17], RACE_globalString);
 
                 for (new p = 0; p < MAX_PLAYERS; p++)
                 {
@@ -2346,8 +2050,7 @@ CMD:dveh(playerid, params[])
     return 0;
 }
 
-new Float:ClickedMap[MAX_PLAYERS][3];
-// TELEPORTAR CLICANDO NO MAPA - ADMIN
+new Float:ClickedMap[MAX_PLAYERS][3]; // TELEPORTAR CLICANDO NO MAPA - ADMIN
 public OnPlayerClickMap(playerid, Float:fX, Float:fY, Float:fZ)
 {
     if (ClickedMap[playerid][0] == 0.0 && ClickedMap[playerid][1] == 0.0 && ClickedMap[playerid][2] == 0.0)
