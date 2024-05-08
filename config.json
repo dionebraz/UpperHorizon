@@ -100,7 +100,8 @@
             "UpperHorizon"
         ],
         "side_scripts": [
-            "filterscripts/flymode"
+            "filterscripts/flymode",
+            "filterscripts/RealTime"
         ]
     },
     "rcon": {

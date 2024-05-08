@@ -17,7 +17,8 @@
 #define DIALOG_UNUSED 		0
 #define DIALOG_RACE 		1
 
-#define RACE_VIRTUALWORLD 	1
+#define DEFAULT_VIRTUALWORLD 	0
+#define RACE_VIRTUALWORLD 	    1
 
 enum RACE_playerInfo
 {
@@ -443,7 +444,7 @@ RACE_loadTextdraws()
         TextDrawFont(RACE_pInfo[i][RACE_textdrawRaceHud][3], TEXT_DRAW_FONT_3);
         TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawRaceHud][3], true);
 
-        RACE_pInfo[i][RACE_textdrawRaceHud][4] = TextDrawCreate(544.000, 236.000, "Nome_Sobrenome");
+        RACE_pInfo[i][RACE_textdrawRaceHud][4] = TextDrawCreate(544.000, 236.000, " "); //Nome Player
         TextDrawLetterSize(RACE_pInfo[i][RACE_textdrawRaceHud][4], 0.250, 1.200);
         TextDrawAlignment(RACE_pInfo[i][RACE_textdrawRaceHud][4], TEXT_DRAW_ALIGN_LEFT);
         TextDrawColour(RACE_pInfo[i][RACE_textdrawRaceHud][4], -56);
@@ -483,7 +484,7 @@ RACE_loadTextdraws()
         TextDrawFont(RACE_pInfo[i][RACE_textdrawRaceHud][7], TEXT_DRAW_FONT_3);
         TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawRaceHud][7], true);
 
-        RACE_pInfo[i][RACE_textdrawRaceHud][8] = TextDrawCreate(544.000, 176.000, "Nome_Sobrenome");
+        RACE_pInfo[i][RACE_textdrawRaceHud][8] = TextDrawCreate(544.000, 176.000, " "); //Nome Player
         TextDrawLetterSize(RACE_pInfo[i][RACE_textdrawRaceHud][8], 0.250, 1.200);
         TextDrawAlignment(RACE_pInfo[i][RACE_textdrawRaceHud][8], TEXT_DRAW_ALIGN_LEFT);
         TextDrawColour(RACE_pInfo[i][RACE_textdrawRaceHud][8], -56);
@@ -523,7 +524,7 @@ RACE_loadTextdraws()
         TextDrawFont(RACE_pInfo[i][RACE_textdrawRaceHud][11], TEXT_DRAW_FONT_3);
         TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawRaceHud][11], true);
 
-        RACE_pInfo[i][RACE_textdrawRaceHud][12] = TextDrawCreate(544.000, 196.000, "Nome_Sobrenome");
+        RACE_pInfo[i][RACE_textdrawRaceHud][12] = TextDrawCreate(544.000, 196.000, " "); //Nome Player
         TextDrawLetterSize(RACE_pInfo[i][RACE_textdrawRaceHud][12], 0.250, 1.200);
         TextDrawAlignment(RACE_pInfo[i][RACE_textdrawRaceHud][12], TEXT_DRAW_ALIGN_LEFT);
         TextDrawColour(RACE_pInfo[i][RACE_textdrawRaceHud][12], -56);
@@ -563,7 +564,7 @@ RACE_loadTextdraws()
         TextDrawFont(RACE_pInfo[i][RACE_textdrawRaceHud][15], TEXT_DRAW_FONT_3);
         TextDrawSetProportional(RACE_pInfo[i][RACE_textdrawRaceHud][15], true);
 
-        RACE_pInfo[i][RACE_textdrawRaceHud][16] = TextDrawCreate(544.000, 216.000, "Nome_Sobrenome");
+        RACE_pInfo[i][RACE_textdrawRaceHud][16] = TextDrawCreate(544.000, 216.000, " "); //Nome Player
         TextDrawLetterSize(RACE_pInfo[i][RACE_textdrawRaceHud][16], 0.250, 1.200);
         TextDrawAlignment(RACE_pInfo[i][RACE_textdrawRaceHud][16], TEXT_DRAW_ALIGN_LEFT);
         TextDrawColour(RACE_pInfo[i][RACE_textdrawRaceHud][16], -1);
@@ -665,22 +666,22 @@ RACE_hidePlayerRaceHudTextdraws(playerid)
     for (new i = 0; i < 22; i++) TextDrawHideForPlayer(playerid, RACE_pInfo[playerid][RACE_textdrawRaceHud][i]);
 }
 
-RACE_getPlayerSpeed(playerid)
-{
-    new Float:X,
-        Float:Y,
-        Float:Z;
+// RACE_getPlayerSpeed(playerid)
+// {
+//     new Float:X,
+//         Float:Y,
+//         Float:Z;
 
-    if (IsPlayerInAnyVehicle(playerid))
-    {
-        GetVehicleVelocity(GetPlayerVehicleID(playerid), X, Y, Z);
-    }
-    else
-    {
-        GetPlayerVelocity(playerid, X, Y, Z);
-    }
-    return floatround(floatsqroot((X * X) + (Y * Y) + (Z * Z)) * 195.12);
-}
+//     if (IsPlayerInAnyVehicle(playerid))
+//     {
+//         GetVehicleVelocity(GetPlayerVehicleID(playerid), X, Y, Z);
+//     }
+//     else
+//     {
+//         GetPlayerVelocity(playerid, X, Y, Z);
+//     }
+//     return floatround(floatsqroot((X * X) + (Y * Y) + (Z * Z)) * 195.12);
+// }
 
 RACE_replaceline(const filename[], const find[], const replace[])
 {
@@ -1021,7 +1022,7 @@ public RACE_prepareEvent(RaceID)
 
     GameTextForAll("~w~Uma corrida ~b~~h~~h~iniciou!", 2000, 3);
 
-    format(RACE_globalString, sizeof(RACE_globalString), "[CORRIDA]{FFFFFF} O recordista foi {1E90FF}%s{FFFFFF} com {1E90FF}%i:%02i.%03i{FFFFFF} feitos em {1E90FF}%s{FFFFFF}.", RACE_rInfo[RACE_runningID][0][raceRecordHolder], RACE_rInfo[RACE_runningID][0][raceRecord] / 60000, ((RACE_rInfo[RACE_runningID][0][raceRecord] / 1000) % 60), RACE_rInfo[RACE_runningID][0][raceRecord] % 1000, RACE_convertTime(RACE_rInfo[RACE_runningID][0][raceRecordPlaced], false));
+    format(RACE_globalString, sizeof(RACE_globalString), "[CORRIDA]{FFFFFF} O recordista foi {1E90FF}%s{FFFFFF} com {1E90FF}%i:%02i.%03i{FFFFFF} feitos em {1E90FF}%s", RACE_rInfo[RACE_runningID][0][raceRecordHolder], RACE_rInfo[RACE_runningID][0][raceRecord] / 60000, ((RACE_rInfo[RACE_runningID][0][raceRecord] / 1000) % 60), RACE_rInfo[RACE_runningID][0][raceRecord] % 1000, RACE_convertTime(RACE_rInfo[RACE_runningID][0][raceRecordPlaced], false));
     SendClientMessageToAll(0x1E90FF00, RACE_globalString);
     return 1;
 }
@@ -1098,6 +1099,13 @@ public RACE_finishEvent(reason)
         case 2: format(RACE_globalString, sizeof(RACE_globalString), "A corrida ~b~~h~~h~%s~w~ terminou. (Todos os jogadores sairam)", RACE_rInfo[RACE_runningID][0][raceName]);
         case 3: format(RACE_globalString, sizeof(RACE_globalString), "A corrida ~b~~h~~h~%s~w~ terminou. (Tempo esgotado)", RACE_rInfo[RACE_runningID][0][raceName]);
     }
+
+    for (new i = 0; i < MAX_PLAYERS; i++)
+    {
+        notification.Show(i, "CORRIDA", RACE_globalString, "hud:radar_Flag");
+        SetPlayerVirtualWorld(i, DEFAULT_VIRTUALWORLD);
+    }
+
     return 1;
 }
 
@@ -1292,10 +1300,6 @@ public RACE_countDown()
 
             if (RACE_timerCounter == 5)
             {
-                for (new i = 0; i < MAX_PLAYERS; i++)
-                {
-                    LimparChat(i);
-                }
                 format(RACE_globalString, sizeof(RACE_globalString), "[CORRIDA]{FFFFFF} A corrida de %s esta prestes a começar em 5 segundos. Use {1E90FF}/race{FFFFFF} para participar!", RACE_rInfo[RACE_runningID][0][raceName]);
                 SendClientMessageToAll(0x1E90FF00, RACE_globalString);
             }
@@ -1327,8 +1331,8 @@ public RACE_playerFinishedTheRace(playerid)
                 RACE_updateRace(RACE_runningID);
 
                 RACE_globalString[0] = '\0';
-                format(RACE_globalString, sizeof(RACE_globalString), "[CORRIDA]{FFFFFF} %s terminou em primeiro e quebrou o recorde atual para {00ff80}%i:%02i.%03i{FFFFFF}.", RACE_pInfo[playerid][RACE_playerUsername], RACE_pInfo[playerid][RACE_playerTimeTookToFinish] / 60000, ((RACE_pInfo[playerid][RACE_playerTimeTookToFinish] / 1000) % 60), RACE_pInfo[playerid][RACE_playerTimeTookToFinish] % 1000);
-                SendClientMessageToAll(0x00ff8000, RACE_globalString);
+                format(RACE_globalString, sizeof(RACE_globalString), "[CORRIDA]{FFFFFF} %s terminou em primeiro e quebrou o recorde atual para {1E90FF}%i:%02i.%03i", RACE_pInfo[playerid][RACE_playerUsername], RACE_pInfo[playerid][RACE_playerTimeTookToFinish] / 60000, ((RACE_pInfo[playerid][RACE_playerTimeTookToFinish] / 1000) % 60), RACE_pInfo[playerid][RACE_playerTimeTookToFinish] % 1000);
+                SendClientMessageToAll(0x1E90FF00, RACE_globalString);
 
                 /* NOTICE: Give Awards */
             }
@@ -1342,16 +1346,16 @@ public RACE_playerFinishedTheRace(playerid)
                 RACE_updateRace(RACE_runningID);
 
                 RACE_globalString[0] = '\0';
-                format(RACE_globalString, sizeof(RACE_globalString), "[CORRIDA]{FFFFFF} %s terminou em primeiro e quebrou o recorde atual para {00ff80}%i:%02i.%03i{FFFFFF}.", RACE_pInfo[playerid][RACE_playerUsername], RACE_pInfo[playerid][RACE_playerTimeTookToFinish] / 60000, ((RACE_pInfo[playerid][RACE_playerTimeTookToFinish] / 1000) % 60), RACE_pInfo[playerid][RACE_playerTimeTookToFinish] % 1000);
-                SendClientMessageToAll(0x00ff8000, RACE_globalString);
+                format(RACE_globalString, sizeof(RACE_globalString), "[CORRIDA]{FFFFFF} %s terminou em primeiro e quebrou o recorde atual para {1E90FF}%i:%02i.%03i", RACE_pInfo[playerid][RACE_playerUsername], RACE_pInfo[playerid][RACE_playerTimeTookToFinish] / 60000, ((RACE_pInfo[playerid][RACE_playerTimeTookToFinish] / 1000) % 60), RACE_pInfo[playerid][RACE_playerTimeTookToFinish] % 1000);
+                SendClientMessageToAll(0x1E90FF00, RACE_globalString);
 
                 /* NOTICE: Give Awards */
             }
             else
             {
                 RACE_globalString[0] = '\0';
-                format(RACE_globalString, sizeof(RACE_globalString), "[CORRIDA]{FFFFFF} %s terminou em 1º lugar em {00ff80}%i:%02i.%03i{FFFFFF}.", RACE_pInfo[playerid][RACE_playerUsername], RACE_pInfo[playerid][RACE_playerTimeTookToFinish] / 60000, ((RACE_pInfo[playerid][RACE_playerTimeTookToFinish] / 1000) % 60), RACE_pInfo[playerid][RACE_playerTimeTookToFinish] % 1000);
-                SendClientMessageToAll(0x00ff8000, RACE_globalString);
+                format(RACE_globalString, sizeof(RACE_globalString), "[CORRIDA]{FFFFFF} %s terminou em 1º lugar em {1E90FF}%i:%02i.%03i", RACE_pInfo[playerid][RACE_playerUsername], RACE_pInfo[playerid][RACE_playerTimeTookToFinish] / 60000, ((RACE_pInfo[playerid][RACE_playerTimeTookToFinish] / 1000) % 60), RACE_pInfo[playerid][RACE_playerTimeTookToFinish] % 1000);
+                SendClientMessageToAll(0x1E90FF00, RACE_globalString);
 
                 /* NOTICE: Give Awards */
             }
@@ -1361,8 +1365,8 @@ public RACE_playerFinishedTheRace(playerid)
             RACE_pInfo[playerid][RACE_playerTimeTookToFinish] = GetTickCount() - RACE_pInfo[playerid][RACE_playerTimeTookToFinish];
 
             RACE_globalString[0] = '\0';
-            format(RACE_globalString, sizeof(RACE_globalString), "[CORRIDA]{FFFFFF} %s terminou em 2º lugar em {00ff80}%i:%02i.%03i{FFFFFF}.", RACE_pInfo[playerid][RACE_playerUsername], RACE_pInfo[playerid][RACE_playerTimeTookToFinish] / 60000, ((RACE_pInfo[playerid][RACE_playerTimeTookToFinish] / 1000) % 60), RACE_pInfo[playerid][RACE_playerTimeTookToFinish] % 1000);
-            SendClientMessageToAll(0x00ff8000, RACE_globalString);
+            format(RACE_globalString, sizeof(RACE_globalString), "[CORRIDA]{FFFFFF} %s terminou em 2º lugar em {1E90FF}%i:%02i.%03i", RACE_pInfo[playerid][RACE_playerUsername], RACE_pInfo[playerid][RACE_playerTimeTookToFinish] / 60000, ((RACE_pInfo[playerid][RACE_playerTimeTookToFinish] / 1000) % 60), RACE_pInfo[playerid][RACE_playerTimeTookToFinish] % 1000);
+            SendClientMessageToAll(0x1E90FF00, RACE_globalString);
 
             /* NOTICE: Give Awards */
         }
@@ -1371,8 +1375,8 @@ public RACE_playerFinishedTheRace(playerid)
             RACE_pInfo[playerid][RACE_playerTimeTookToFinish] = GetTickCount() - RACE_pInfo[playerid][RACE_playerTimeTookToFinish];
 
             RACE_globalString[0] = '\0';
-            format(RACE_globalString, sizeof(RACE_globalString), "[CORRIDA]{FFFFFF} %s terminou em 3º lugar em {00ff80}%i:%02i.%03i{FFFFFF}.", RACE_pInfo[playerid][RACE_playerUsername], RACE_pInfo[playerid][RACE_playerTimeTookToFinish] / 60000, ((RACE_pInfo[playerid][RACE_playerTimeTookToFinish] / 1000) % 60), RACE_pInfo[playerid][RACE_playerTimeTookToFinish] % 1000);
-            SendClientMessageToAll(0x00ff8000, RACE_globalString);
+            format(RACE_globalString, sizeof(RACE_globalString), "[CORRIDA]{FFFFFF} %s terminou em 3º lugar em {1E90FF}%i:%02i.%03i", RACE_pInfo[playerid][RACE_playerUsername], RACE_pInfo[playerid][RACE_playerTimeTookToFinish] / 60000, ((RACE_pInfo[playerid][RACE_playerTimeTookToFinish] / 1000) % 60), RACE_pInfo[playerid][RACE_playerTimeTookToFinish] % 1000);
+            SendClientMessageToAll(0x1E90FF00, RACE_globalString);
 
             /* NOTICE: Give Awards */
         }
@@ -1381,8 +1385,8 @@ public RACE_playerFinishedTheRace(playerid)
             RACE_pInfo[playerid][RACE_playerTimeTookToFinish] = GetTickCount() - RACE_pInfo[playerid][RACE_playerTimeTookToFinish];
 
             RACE_globalString[0] = '\0';
-            format(RACE_globalString, sizeof(RACE_globalString), "[CORRIDA]{FFFFFF} Voce terminou em %dº lugar {00ff80}%i:%02i.%03i{FFFFFF}.", RACE_pInfo[playerid][RACE_playerPosition], RACE_pInfo[playerid][RACE_playerTimeTookToFinish] / 60000, ((RACE_pInfo[playerid][RACE_playerTimeTookToFinish] / 1000) % 60), RACE_pInfo[playerid][RACE_playerTimeTookToFinish] % 1000);
-            SendClientMessage(playerid, 0x00ff8000, RACE_globalString);
+            format(RACE_globalString, sizeof(RACE_globalString), "[CORRIDA]{FFFFFF} Voce terminou em %dº lugar {1E90FF}%i:%02i.%03i", RACE_pInfo[playerid][RACE_playerPosition], RACE_pInfo[playerid][RACE_playerTimeTookToFinish] / 60000, ((RACE_pInfo[playerid][RACE_playerTimeTookToFinish] / 1000) % 60), RACE_pInfo[playerid][RACE_playerTimeTookToFinish] % 1000);
+            SendClientMessage(playerid, 0x1E90FF00, RACE_globalString);
         }
     }
 
@@ -1710,15 +1714,15 @@ forward RACE_OnPlayerStateChange(playerid, PLAYER_STATE:newstate, PLAYER_STATE:o
 
 public OnPlayerUpdate(playerid)
 {
-    if (RACE_isRaceStarted)
-    {
-        if (RACE_pInfo[playerid][RACE_isPlayerInRace])
-        {
-            new speed = RACE_getPlayerSpeed(playerid), string[32];
-            format(string, sizeof(string), "~g~Velocidade:~w~ %d KM/H", speed);
-            TextDrawSetString(RACE_pInfo[playerid][RACE_textdrawSpeed], string);
-        }
-    }
+    // if (RACE_isRaceStarted)
+    // {
+    //     if (RACE_pInfo[playerid][RACE_isPlayerInRace])
+    //     {
+    //         new speed = RACE_getPlayerSpeed(playerid), string[32];
+    //         format(string, sizeof(string), "~g~Velocidade:~w~ %d KM/H", speed);
+    //         TextDrawSetString(RACE_pInfo[playerid][RACE_textdrawSpeed], string);
+    //     }
+    // }
 
 	#if defined RACE_OnPlayerUpdate
     RACE_OnPlayerUpdate(playerid);
@@ -1949,7 +1953,7 @@ CMD:records(playerid, params[])
         format(string, sizeof(string), "%s{009900}%s:{FFFFFF} %s (%i:%02i.%03i)\n\n", string, RACE_rInfo[i][0][raceName], RACE_rInfo[i][0][raceRecordHolder], RACE_rInfo[i][0][raceRecord] / 60000, ((RACE_rInfo[i][0][raceRecord] / 1000) % 60), RACE_rInfo[i][0][raceRecord] % 1000);
     }
 
-    ShowPlayerDialog(playerid, DIALOG_UNUSED, DIALOG_STYLE_MSGBOX, "Detentores de recordes de corrida", string, "Fechar", "");
+    ShowPlayerDialog(playerid, DIALOG_UNUSED, DIALOG_STYLE_MSGBOX, "Recordistas das corridas", string, "Fechar", "");
     return 1;
 }
 
@@ -1965,7 +1969,7 @@ CMD:resetrecord(playerid, params[])
     {
         if (!strcmp(rName, RACE_rInfo[i][0][raceName], false))
         {
-            strcat((RACE_rInfo[i][0][raceRecordHolder][0] = EOS, RACE_rInfo[i][0][raceRecordHolder]), "Nenhum", MAX_PLAYER_NAME);
+            strcat((RACE_rInfo[i][0][raceRecordHolder][0] = EOS, RACE_rInfo[i][0][raceRecordHolder]), "Ninguem", MAX_PLAYER_NAME);
             RACE_rInfo[i][0][raceRecord] = 0;
             RACE_rInfo[i][0][raceRecordPlaced] = 0;
 

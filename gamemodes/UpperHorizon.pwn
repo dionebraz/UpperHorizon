@@ -1,5 +1,6 @@
 #include <open.mp>
 #include <race>
+#include <zcmd>
 #include <YSI-Includes\YSI_Coding\y_hooks>
 
 /*
@@ -28,7 +29,6 @@ main()
 
 public OnGameModeInit()
 {
-    SetWeather(0);
     UsePlayerPedAnims();
     DisableInteriorEnterExits();
     AddPlayerClass(0, 2495.3547, -1688.2319, 13.6774, 351.1646);
@@ -37,12 +37,12 @@ public OnGameModeInit()
     SendRconCommand("language Portugues - Brasil");
     SendRconCommand("hostname Upper Horizon");
     SendRconCommand("mapname Brasil");
-    return 1;
+    return true;
 }
 
 public OnGameModeExit()
 {
-    return 1;
+    return true;
 }
 
 /*
@@ -55,25 +55,25 @@ public OnGameModeExit()
 
 public OnPlayerConnect(playerid)
 {
-    return 1;
+    return true;
 }
 
 public OnPlayerDisconnect(playerid, reason)
 {
-    return 1;
+    return true;
 }
 
 public OnPlayerRequestClass(playerid, classid)
 {
     SpawnPlayerPier(playerid);
-    return 1;
+    return true;
 }
 
 public OnPlayerSpawn(playerid)
 {
     SetPlayerInterior(playerid, 0);
     LimparChat(playerid);
-    return 1;
+    return true;
 }
 
 /*
@@ -110,12 +110,12 @@ public OnRconLoginAttempt(ip[], password[], success)
     {
         printf("[LOG] Tentativa de login RCON falhou de %s com senha '%s'", ip, password);
     }
-    return 1;
+    return true;
 }
 
 public OnScriptCash(playerid, amount, source)
 {
-    return 1;
+    return true;
 }
 
 stock SpawnPlayerPier(playerid)
@@ -128,11 +128,54 @@ stock SpawnPlayerPier(playerid)
     SpawnPlayer(playerid);
     SetCameraBehindPlayer(playerid);
     LimparChat(playerid);
-    return 1;
+    return true;
 }
 
 stock LimparChat(playerid)
 {
     for (new i = 0; i < 100; i++) SendClientMessage(playerid, -1, "");
-    return 1;
+    return true;
+}
+
+CMD:lc(playerid)
+{
+    LimparChat(playerid);
+    return true;
+}
+
+new clima;
+new tempo;
+
+CMD:clima(playerid, params[])
+{
+    if (IsPlayerAdmin(playerid))
+    {
+        if (sscanf(params, "d", clima))
+        {
+            SendClientMessage(playerid, -1, "Uso: /clima [ID Clima]");
+        }
+        else
+        {
+            SetWeather(clima);
+        }
+    }
+    else SendClientMessage(playerid, -1, "Você não está logado na RCON.");
+    return true;
+}
+
+CMD:tempo(playerid, params[])
+{
+    if (IsPlayerAdmin(playerid))
+    {
+        if (sscanf(params, "d", tempo))
+        {
+            SendClientMessage(playerid, -1, "Uso: /tempo [Hora]");
+        }
+        else
+        {
+            SetWorldTime(tempo);
+        }
+    }
+    else SendClientMessage(playerid, -1, "Você não está logado na RCON.");
+    return true;
 }

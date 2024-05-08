@@ -64,7 +64,7 @@ stock InternalNotification_Show(const playerid, const string:title[], const stri
 	new Float:static_x=0.0;
 	for(new x=-1;++x<notifyIndex[playerid];) {
 		createNotifyTD(playerid, x, x * 5, static_x);
-		static_x+=(notifyInfo[playerid][x][ntLines] * 7.5) + 28.0; //Espaçamento das Notify.
+		static_x+=(notifyInfo[playerid][x][ntLines] * 7.5) + 28.0; //Espaçamento das Notify = 25.0 padrão.
 	}
 
 	SetTimerEx(#destroy_notify, SECONDS_NT * 1000, false, #i, playerid);
@@ -190,7 +190,7 @@ stock createNotifyTD(const playerid, index, i, const Float:static_x) {
 	PlayerTextDrawAlignment(playerid, notifyPTD[playerid][i], TEXT_DRAW_ALIGN_LEFT);
 	PlayerTextDrawColour(playerid, notifyPTD[playerid][i], 512819199);
 	PlayerTextDrawUseBox(playerid, notifyPTD[playerid][i], true);
-	PlayerTextDrawBoxColour(playerid, notifyPTD[playerid][i], 512819099);
+	PlayerTextDrawBoxColour(playerid, notifyPTD[playerid][i], 155);
 	PlayerTextDrawSetShadow(playerid, notifyPTD[playerid][i], 0);
 	PlayerTextDrawSetOutline(playerid, notifyPTD[playerid][i], 0);
 	PlayerTextDrawBackgroundColour(playerid, notifyPTD[playerid][i], 255);
@@ -213,7 +213,7 @@ stock createNotifyTD(const playerid, index, i, const Float:static_x) {
 	PlayerTextDrawShow(playerid, notifyPTD[playerid][i]);
 
 	notifyPTD[playerid][++i] = CreatePlayerTextDraw(playerid, 47.47, 291.44 - x, notifyInfo[playerid][index][ntTitle]);
-	PlayerTextDrawLetterSize(playerid, notifyPTD[playerid][i], 0.134, 0.861);
+	PlayerTextDrawLetterSize(playerid, notifyPTD[playerid][i], 0.145, 0.885);
 	PlayerTextDrawAlignment(playerid, notifyPTD[playerid][i], TEXT_DRAW_ALIGN_LEFT);
 	PlayerTextDrawColour(playerid, notifyPTD[playerid][i], -1);
 	PlayerTextDrawSetShadow(playerid, notifyPTD[playerid][i], 0);
@@ -225,7 +225,7 @@ stock createNotifyTD(const playerid, index, i, const Float:static_x) {
 	PlayerTextDrawShow(playerid, notifyPTD[playerid][i]);
 
 	notifyPTD[playerid][++i] = CreatePlayerTextDraw(playerid, 30.61, 308.96 - x, notifyInfo[playerid][index][ntMessage]);
-	PlayerTextDrawLetterSize(playerid, notifyPTD[playerid][i], 0.145, 0.887);
+	PlayerTextDrawLetterSize(playerid, notifyPTD[playerid][i], 0.145, 0.875);
 	PlayerTextDrawTextSize(playerid, notifyPTD[playerid][i], 132.0, 0.0);
 	PlayerTextDrawAlignment(playerid, notifyPTD[playerid][i], TEXT_DRAW_ALIGN_LEFT);
 	PlayerTextDrawColour(playerid, notifyPTD[playerid][i], -1);
