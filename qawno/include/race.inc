@@ -20,6 +20,15 @@
 #define DEFAULT_VIRTUALWORLD 	0
 #define RACE_VIRTUALWORLD 	    1
 
+#define ICONE_ERRO "ld_chat:thumbdn"
+#define ICONE_AVISO "ld_chat:badchat"
+#define ICONE_SUCESSO "ld_chat:thumbup"
+#define ICONE_CORRIDA "hud:radar_Flag"
+
+#define MAX_SONGS 5
+#define minutos(%0) (1000 * %0 * 60)
+#define segundos(%0) (1000 * %0)
+
 enum RACE_playerInfo
 {
     RACE_playerUsername[MAX_PLAYER_NAME],
@@ -97,11 +106,60 @@ new RACE_pInfo[MAX_PLAYERS][RACE_playerInfo],
 
                           RACE_globalString[144];
 
+// LINKS E DURAÇÃO DAS MÚSICAS DA CORRIDA
+new songs_links[MAX_SONGS][128] =
+{
+    "http://som.brasilplaygames.com.br/som/TrainingDay.mp3",
+    "http://som.brasilplaygames.com.br/som/IWannaRock.mp3",
+    "http://som.brasilplaygames.com.br/som/RightField.mp3",
+    "http://som.brasilplaygames.com.br/som/ShockAbsorber.mp3",
+    "http://som.brasilplaygames.com.br/som/Rounds.mp3"
+};
+new songs_durations[MAX_SONGS] =
+{
+    134,
+    125,
+    130,
+    127,
+    226
+};
+
+new g_Contador = 0, g_TimerContador[MAX_PLAYERS], RACE_currentSong;
+
+stock RACE_randomSongs(playerid)
+{
+    new randomIndex = random(MAX_SONGS);
+    new songLink[128];
+    format(songLink, sizeof(songLink), songs_links[randomIndex]);
+    PlayAudioStreamForPlayer(playerid, songLink, 0.0, 0.0, 0.0, 0.0, false);
+    RACE_currentSong = randomIndex;
+    g_TimerContador[playerid] = SetTimer("ContadorTick", segundos(1), true);
+    return true;
+}
+
+forward ContadorTick(playerid);
+public ContadorTick(playerid)
+{
+    g_Contador++;
+    // new counterMessage[64];
+    // format(counterMessage, sizeof(counterMessage), "Contador: %d", songs_durations[RACE_currentSong] - g_Contador);
+    // SendClientMessageToAll(-1, counterMessage);
+
+    if (g_Contador >= songs_durations[RACE_currentSong])
+    {
+        RACE_randomSongs(playerid);
+        KillTimer(g_TimerContador[playerid]);
+        g_Contador = 0;
+        // SendClientMessageToAll(-1, "Música atual acabou!");
+    }
+    return true;
+}
+
 public OnPlayerCommandPerformed(playerid, cmdtext[], success)
 {
     if (!success)
     {
-        notification.Show(playerid, "Erro!", "Comando inexistente.", "ld_chat:badchat");
+        notification.Show(playerid, "Erro!", "Comando inexistente.", ICONE_ERRO);
     }
     return 1;
 }
@@ -1017,7 +1075,7 @@ public RACE_prepareEvent(RaceID)
     format(RACE_globalString, sizeof(RACE_globalString), "A corrida ~b~~h~~h~%s~w~ esta prestes a iniciar em 30 segundos. Use ~b~~h~~h~/race~w~ para participar!", RACE_rInfo[RACE_runningID][0][raceName]);
     for (new i = 0; i < MAX_PLAYERS; i++)
     {
-        notification.Show(i, "CORRIDA", RACE_globalString, "hud:radar_Flag");
+        notification.Show(i, "CORRIDA", RACE_globalString, ICONE_CORRIDA);
     }
 
     GameTextForAll("~w~Uma corrida ~b~~h~~h~iniciou!", 2000, 3);
@@ -1102,8 +1160,11 @@ public RACE_finishEvent(reason)
 
     for (new i = 0; i < MAX_PLAYERS; i++)
     {
-        notification.Show(i, "CORRIDA", RACE_globalString, "hud:radar_Flag");
+        notification.Show(i, "CORRIDA", RACE_globalString, ICONE_CORRIDA);
         SetPlayerVirtualWorld(i, DEFAULT_VIRTUALWORLD);
+
+        KillTimer(g_TimerContador[i]);
+        g_Contador = 0;
     }
 
     return 1;
@@ -1136,7 +1197,7 @@ public RACE_countDown()
                 format(RACE_globalString, sizeof(RACE_globalString), "A corrida ~b~~h~~h~%s~w~ terminou. (Por falta de participantes)", RACE_rInfo[RACE_runningID][0][raceName]);
                 for (new i = 0; i < MAX_PLAYERS; i++)
                 {
-                    notification.Show(i, "CORRIDA", RACE_globalString, "hud:radar_Flag");
+                    notification.Show(i, "CORRIDA", RACE_globalString, ICONE_CORRIDA);
                 }
                 return 1;
             }
@@ -1205,6 +1266,7 @@ public RACE_countDown()
                         RACE_pInfo[i][RACE_playerTimeTookToFinish] = GetTickCount();
 
                         SetCameraBehindPlayer(i);
+                        RACE_randomSongs(i);
                     }
                 }
 
@@ -1212,7 +1274,7 @@ public RACE_countDown()
                 format(RACE_globalString, sizeof(RACE_globalString), "A corrida de ~b~~h~~h~%s~w~ iniciou!", RACE_rInfo[RACE_runningID][0][raceName]);
                 for (new i = 0; i < MAX_PLAYERS; i++)
                 {
-                    notification.Show(i, "CORRIDA", RACE_globalString, "hud:radar_Flag");
+                    notification.Show(i, "CORRIDA", RACE_globalString, ICONE_CORRIDA);
                 }
 
                 RACE_checkRaceTimer = SetTimer("RACE_checkRace", 1000, true);
@@ -1390,6 +1452,9 @@ public RACE_playerFinishedTheRace(playerid)
         }
     }
 
+    KillTimer(g_TimerContador[playerid]);
+    g_Contador = 0;
+
     TogglePlayerControllable(playerid, true);
     DisableRemoteVehicleCollisions(playerid, false);
 
@@ -1543,6 +1608,9 @@ public RACE_playerJoinEvent(playerid)
 forward RACE_playerExitEvent(playerid);
 public RACE_playerExitEvent(playerid)
 {
+    KillTimer(g_TimerContador[playerid]);
+    g_Contador = 0;
+    
     TogglePlayerControllable(playerid, true);
     DisableRemoteVehicleCollisions(playerid, false);
 
@@ -1887,15 +1955,15 @@ CMD:race(playerid)
 {
     if (!IsPlayerConnected(playerid)) return 0;
 
-    if (RACE_isRaceStarted) return notification.Show(playerid, "Erro!", "A corrida ja iniciou.", "ld_chat:badchat");
-    if (!RACE_isRaceInLobby) return notification.Show(playerid, "Erro!", "Nao ha corrida em andamento no momento.", "ld_chat:badchat");
-    if (RACE_playersSpawned > 15) notification.Show(playerid, "Erro!", "A corrida nao pode adicionar mais jogadores. Experimente a proxima.", "ld_chat:badchat");
+    if (RACE_isRaceStarted) return notification.Show(playerid, "Erro!", "A corrida ja iniciou.", ICONE_ERRO);
+    if (!RACE_isRaceInLobby) return notification.Show(playerid, "Erro!", "Nao ha corrida em andamento no momento.", ICONE_ERRO);
+    if (RACE_playersSpawned > 15) notification.Show(playerid, "Erro!", "A corrida nao pode adicionar mais jogadores. Experimente a proxima.", ICONE_ERRO);
 
     RACE_globalString[0] = '\0';
     format(RACE_globalString, sizeof(RACE_globalString), "~b~~h~~h~%s(%d)~w~ entrou na corrida. (%d/16) ~b~~h~~h~(/race)", RACE_pInfo[playerid][RACE_playerUsername], playerid, RACE_playersInEvent + 1);
     for (new i = 0; i < MAX_PLAYERS; i++)
     {
-        notification.Show(i, "CORRIDA", RACE_globalString, "hud:radar_Flag");
+        notification.Show(i, "CORRIDA", RACE_globalString, ICONE_CORRIDA);
     }
 
     RACE_pInfo[playerid][RACE_isPlayerInRace] = true;
@@ -1908,22 +1976,22 @@ CMD:exitrace(playerid)
 {
     if (!IsPlayerConnected(playerid)) return 0;
 
-    if (!RACE_pInfo[playerid][RACE_isPlayerInRace]) return notification.Show(playerid, "Erro!", "~b~~h~~h~»~w~ Voce nao esta em nenhuma corrida.", "ld_chat:badchat");
+    if (!RACE_pInfo[playerid][RACE_isPlayerInRace]) return notification.Show(playerid, "Erro!", "~b~~h~~h~»~w~ Voce nao esta em nenhuma corrida.", ICONE_ERRO);
 
     RACE_playerExitEvent(playerid);
 
     RACE_globalString[0] = '\0';
     format(RACE_globalString, sizeof(RACE_globalString), "Voce saiu da corrida ~b~~h~~h~%s~w~.", RACE_rInfo[RACE_runningID][0][raceName]);
-    notification.Show(playerid, "Corrida", RACE_globalString, "hud:radar_Flag");
+    notification.Show(playerid, "Corrida", RACE_globalString, ICONE_CORRIDA);
     return 1;
 }
 
 CMD:startrace(playerid, params[])
 {
     if (!IsPlayerConnected(playerid)) return 0;
-    if (RACE_loadedRaces == 0) return notification.Show(playerid, "Erro!", "Nenhuma corrida encontrada.", "ld_chat:badchat");
-    if (RACE_isRaceStarted) return notification.Show(playerid, "Erro!", "A corrida ja iniciou.", "ld_chat:badchat");
-    if (RACE_isRaceInLobby) return notification.Show(playerid, "Erro!", "A corrida esta prestes a iniciar.", "ld_chat:badchat");
+    if (RACE_loadedRaces == 0) return notification.Show(playerid, "Erro!", "Nenhuma corrida encontrada.", ICONE_ERRO);
+    if (RACE_isRaceStarted) return notification.Show(playerid, "Erro!", "A corrida ja iniciou.", ICONE_ERRO);
+    if (RACE_isRaceInLobby) return notification.Show(playerid, "Erro!", "A corrida esta prestes a iniciar.", ICONE_ERRO);
 
     new string[MAX_RACES * 16];
 
@@ -1939,7 +2007,7 @@ CMD:startrace(playerid, params[])
 CMD:endrace(playerid)
 {
     if (!IsPlayerConnected(playerid)) return 0;
-    if (!RACE_isRaceStarted) return notification.Show(playerid, "Erro!", "Nao ha corrida.", "ld_chat:badchat");
+    if (!RACE_isRaceStarted) return notification.Show(playerid, "Erro!", "Nao ha corrida.", ICONE_ERRO);
     RACE_finishEvent(1);
     return 1;
 }
@@ -1963,7 +2031,7 @@ CMD:resetrecord(playerid, params[])
 
     new rName[24];
 
-    if (sscanf(params, "s[24]", rName)) return notification.Show(playerid, "Comando Admin", "Use: /resetrecord [Nome]", "ld_chat:badchat");
+    if (sscanf(params, "s[24]", rName)) return notification.Show(playerid, "Comando Admin", "Use: /resetrecord [Nome]", ICONE_AVISO);
 
     for (new i = 0; i < RACE_loadedRaces; i++)
     {
@@ -1977,13 +2045,13 @@ CMD:resetrecord(playerid, params[])
 
             RACE_globalString[0] = '\0';
             format(RACE_globalString, sizeof(RACE_globalString), "O recorde %s foi redefinido.", rName);
-            notification.Show(playerid, "Comando Admin", RACE_globalString, "ld_chat:thumbup");
+            notification.Show(playerid, "Comando Admin", RACE_globalString, ICONE_SUCESSO);
 
             return 1;
         }
     }
 
-    notification.Show(playerid, "Erro!", "Esta corrida nao existe.", "ld_chat:badchat");
+    notification.Show(playerid, "Erro!", "Esta corrida nao existe.", ICONE_ERRO);
     return 1;
 }
 
@@ -1993,9 +2061,9 @@ new bool:criouveiculo[MAX_PLAYERS] = false;
 CMD:cveh(playerid, params[])
 {
     new id, cor1, cor2, Float:pos[3], Float:Angle;
-    if (sscanf(params, "dD(-1)D(-1)", id, cor1, cor2)) return notification.Show(playerid, "Comando Admin", "Use: /cveh [id] [cor1] [cor2]", "ld_chat:badchat");
-    if (IsPlayerInAnyVehicle(playerid)) notification.Show(playerid, "Erro!", "Saia do veiculo para criar outro.", "ld_chat:badchat");
-    if (id < 400 || id > 611) return notification.Show(playerid, "Erro!", "Veiculo invalido. Tente IDs entre 400 e 611.", "ld_chat:badchat");
+    if (sscanf(params, "dD(-1)D(-1)", id, cor1, cor2)) return notification.Show(playerid, "Comando Admin", "Use: /cveh [id] [cor1] [cor2]", ICONE_AVISO);
+    if (IsPlayerInAnyVehicle(playerid)) notification.Show(playerid, "Erro!", "Saia do veiculo para criar outro.", ICONE_ERRO);
+    if (id < 400 || id > 611) return notification.Show(playerid, "Erro!", "Veiculo invalido. Tente IDs entre 400 e 611.", ICONE_ERRO);
 
     GetPlayerPos(playerid, pos[0], pos[1], pos[2]);
     GetPlayerFacingAngle(playerid, Angle);
@@ -2010,7 +2078,6 @@ CMD:cveh(playerid, params[])
 
 CMD:dveh(playerid, params[])
 {
-
     new targetVehicleid;
     targetVehicleid = GetPlayerVehicleID(playerid);
 

@@ -36,7 +36,11 @@ public OnGameModeInit()
     SetGameModeText("Upper Horizon v0.1");
     SendRconCommand("language Portugues - Brasil");
     SendRconCommand("hostname Upper Horizon");
-    SendRconCommand("mapname Brasil");
+    return true;
+}
+
+public OnPlayerConnect(playerid)
+{
     return true;
 }
 
@@ -52,11 +56,6 @@ public OnGameModeExit()
      \___\___/_|_|_|_|_|_\___/_||_|
 
 */
-
-public OnPlayerConnect(playerid)
-{
-    return true;
-}
 
 public OnPlayerDisconnect(playerid, reason)
 {

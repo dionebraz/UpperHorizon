@@ -93,7 +93,6 @@ public HoraReal()
     format(str, sizeof str, "~w~%02d %s %d", dia, VerMes(mes), ano);
     TextDrawSetString(Reloginho1, str);
     SetWorldTime(horas + 4);
-    SetWeather(horas);
     TextDrawShowForAll(Reloginho1);
     TextDrawShowForAll(Reloginho2);
     TextDrawShowForAll(Reloginho3);

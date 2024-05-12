@@ -94,7 +94,7 @@
     "password": "",
     "pawn": {
         "legacy_plugins": [
-            "sscanf.so"
+            "sscanf"
         ],
         "main_scripts": [
             "UpperHorizon"
