@@ -147,9 +147,9 @@ public ContadorTick(playerid)
 
     if (g_Contador >= songs_durations[RACE_currentSong])
     {
-        RACE_randomSongs(playerid);
         KillTimer(g_TimerContador[playerid]);
         g_Contador = 0;
+        RACE_randomSongs(playerid);
         // SendClientMessageToAll(-1, "Música atual acabou!");
     }
     return true;
@@ -1096,6 +1096,11 @@ public RACE_checkRace()
     if (RACE_timeLeft == 0)
     {
         RACE_finishEvent(3);
+        foreach (new i : Player)
+        {
+            KillTimer(g_TimerContador[i]);
+            g_Contador = 0;
+        }
     }
     else
     {
@@ -1162,9 +1167,6 @@ public RACE_finishEvent(reason)
     {
         notification.Show(i, "CORRIDA", RACE_globalString, ICONE_CORRIDA);
         SetPlayerVirtualWorld(i, DEFAULT_VIRTUALWORLD);
-
-        KillTimer(g_TimerContador[i]);
-        g_Contador = 0;
     }
 
     return 1;
@@ -1610,7 +1612,7 @@ public RACE_playerExitEvent(playerid)
 {
     KillTimer(g_TimerContador[playerid]);
     g_Contador = 0;
-    
+
     TogglePlayerControllable(playerid, true);
     DisableRemoteVehicleCollisions(playerid, false);
 
@@ -2008,6 +2010,8 @@ CMD:endrace(playerid)
 {
     if (!IsPlayerConnected(playerid)) return 0;
     if (!RACE_isRaceStarted) return notification.Show(playerid, "Erro!", "Nao ha corrida.", ICONE_ERRO);
+    KillTimer(g_TimerContador[playerid]);
+    g_Contador = 0;
     RACE_finishEvent(1);
     return 1;
 }
